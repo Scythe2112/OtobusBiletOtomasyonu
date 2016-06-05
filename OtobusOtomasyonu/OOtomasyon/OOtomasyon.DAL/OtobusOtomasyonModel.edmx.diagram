@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c3d1e85225b54cbe9fbf889d1dd431ad" Name="Diagram1">
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Bilet" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Guzergahlar" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Harcamalar" Width="1.5" PointX="18" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.HarcamaTipleri" Width="1.5" PointX="15.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.IslemKayitlari" Width="1.5" PointX="12.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.IslemKayitTipleri" Width="1.5" PointX="10.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.KoltukDurumlari" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.KoltukTipleri" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Login" Width="1.5" PointX="12.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Musteri" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.MusteriKartlari" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.OdemeTipleri" Width="1.5" PointX="3" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Otobus" Width="1.5" PointX="7.5" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.OtobusDurumlari" Width="1.5" PointX="5.25" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.OtobusOzellikDetay" Width="1.5" PointX="9.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.OtobusOzellikleri" Width="1.5" PointX="7.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.OtobusTipleri" Width="1.5" PointX="5.25" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Personel" Width="1.5" PointX="10.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.PersonelYetki" Width="1.5" PointX="15.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Promosyonlar" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.PromosyonTipleri" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.SeferGuzergahi" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.SeferPersonel" Width="1.5" PointX="18" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.SeferTipleri" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Sehirler" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Sube" Width="1.5" PointX="5.25" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Unvanlar" Width="1.5" PointX="8.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.VardiyaKayitlari" Width="1.5" PointX="12.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Yetkiler" Width="1.5" PointX="13.5" PointY="12.5" IsExpanded="true" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Bilet_KoltukDurumlari" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Bilet_KoltukTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Bilet_OdemeTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Bilet_Promosyonlar" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK__SeferGuze__Guzer__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Guzergahlar_Sehirler" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Sube_Guzergahlar" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Harcamalar_HarcamaTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_IslemKayitlari_IslemKayitTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_IslemKayitlari_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Login_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Musteri_MusteriKartlari" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Musteri_Sehirler" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Otobus_OtobusDurumlari" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Otobus_OtobusTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Otobus_Sube" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_OtobusOzellikDetay_Otobus" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_OtobusOzellikDetay_OtobusOzellikleri" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Personel_Sehirler" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Personel_Sube" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Personel_Unvanlar" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_PersonelYetki_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_SeferPersonel_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_VardiyaKayitlari_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_PersonelYetki_Yetkiler" ManuallyRouted="false" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Promosyonlar_PromosyonTipleri" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Sefer" Width="1.5" PointX="3" PointY="19.25" />
+        <AssociationConnector Association="pnuretSu_otobusModel.fk_GuzergahGuzergahi_Sefer" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Sefer_SeferTipleri" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.SeferDetay" Width="1.5" PointX="15.75" PointY="20.375" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Harcamalar_SeferDetay" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_SeferDetay_Otobus" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_SeferDetay_Sefer" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_SeferPersonel_SeferDetay" />
+        <EntityTypeShape EntityType="pnuretSu_otobusModel.Servis" Width="1.5" PointX="18" PointY="24.75" />
+        <AssociationConnector Association="pnuretSu_otobusModel.FK_Servis_SeferDetay" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,2169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="pnuretSu_otobusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bilet">
+          <Key>
+            <PropertyRef Name="IDBilet" />
+          </Key>
+          <Property Name="IDBilet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelID" Type="int" Nullable="false" />
+          <Property Name="SeferDetayID" Type="int" Nullable="false" />
+          <Property Name="MusteriID" Type="int" Nullable="false" />
+          <Property Name="PromosyonID" Type="int" />
+          <Property Name="Ucret" Type="int" Nullable="false" />
+          <Property Name="IslemTarihi" Type="datetime" />
+          <Property Name="KoltukNo" Type="int" Nullable="false" />
+          <Property Name="KoltukTipiID" Type="int" />
+          <Property Name="OdemeTipiID" Type="int" />
+          <Property Name="KoltukDurumuID" Type="int" Nullable="false" />
+          <Property Name="BinisYeri" Type="int" Nullable="false" />
+          <Property Name="InisYeri" Type="int" Nullable="false" />
+          <Property Name="Durum" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guzergahlar">
+          <Key>
+            <PropertyRef Name="IDGuzergah" />
+          </Key>
+          <Property Name="IDGuzergah" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guzergah" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SehirID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Harcamalar">
+          <Key>
+            <PropertyRef Name="IDHarcama" />
+          </Key>
+          <Property Name="IDHarcama" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeferDetayID" Type="int" Nullable="false" />
+          <Property Name="HarcamaTipiID" Type="int" Nullable="false" />
+          <Property Name="Ucret" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Aciklama" Type="ntext" />
+        </EntityType>
+        <EntityType Name="HarcamaTipleri">
+          <Key>
+            <PropertyRef Name="IDHarcamaTipi" />
+          </Key>
+          <Property Name="IDHarcamaTipi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HarcamaTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IslemKayitlari">
+          <Key>
+            <PropertyRef Name="IDIslemKayit" />
+          </Key>
+          <Property Name="IDIslemKayit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelID" Type="int" Nullable="false" />
+          <Property Name="IslemKayitTipiID" Type="int" Nullable="false" />
+          <Property Name="IslemKayitTarihi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IslemKayitTipleri">
+          <Key>
+            <PropertyRef Name="IDIslemKayitTipi" />
+          </Key>
+          <Property Name="IDIslemKayitTipi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IslemKayitTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KoltukDurumlari">
+          <Key>
+            <PropertyRef Name="IDKoltukDurum" />
+          </Key>
+          <Property Name="IDKoltukDurum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KoltukDurum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama" Type="ntext" />
+        </EntityType>
+        <EntityType Name="KoltukTipleri">
+          <Key>
+            <PropertyRef Name="IDKoltukTipi" />
+          </Key>
+          <Property Name="IDKoltukTipi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KoltukTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="int" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Parola" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="IDMusteri" />
+          </Key>
+          <Property Name="IDMusteri" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TcKimlikNo" Type="char" MaxLength="11" />
+          <Property Name="KartID" Type="nchar" MaxLength="36" Nullable="false" />
+          <Property Name="Cinsiyet" Type="nchar" MaxLength="10" />
+          <Property Name="DogumTarihi" Type="date" />
+          <Property Name="SehirID" Type="int" />
+          <Property Name="EPosta" Type="nvarchar" MaxLength="30" />
+          <Property Name="CepTelefonu" Type="char" MaxLength="24" />
+        </EntityType>
+        <EntityType Name="MusteriKartlari">
+          <Key>
+            <PropertyRef Name="IDKart" />
+          </Key>
+          <Property Name="IDKart" Type="nchar" MaxLength="36" Nullable="false" />
+          <Property Name="Bakiye" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BiletSayisi" Type="int" />
+        </EntityType>
+        <EntityType Name="OdemeTipleri">
+          <Key>
+            <PropertyRef Name="IDOdemeTipi" />
+          </Key>
+          <Property Name="IDOdemeTipi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OdemeTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Otobus">
+          <Key>
+            <PropertyRef Name="IDOtobus" />
+          </Key>
+          <Property Name="IDOtobus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubeID" Type="int" Nullable="false" />
+          <Property Name="OtobusTipiID" Type="int" Nullable="false" />
+          <Property Name="OtobusDurumuID" Type="int" Nullable="false" />
+          <Property Name="KoltukSayisi" Type="int" Nullable="false" />
+          <Property Name="PlakaNo" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtobusDurumlari">
+          <Key>
+            <PropertyRef Name="IDOtobusDurumu" />
+          </Key>
+          <Property Name="IDOtobusDurumu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OtobusDurumu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama" Type="ntext" />
+        </EntityType>
+        <EntityType Name="OtobusOzellikDetay">
+          <Key>
+            <PropertyRef Name="IDOtobusOzellikDetay" />
+          </Key>
+          <Property Name="IDOtobusOzellikDetay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OtobusOzellikID" Type="int" Nullable="false" />
+          <Property Name="OtobusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtobusOzellikleri">
+          <Key>
+            <PropertyRef Name="IDOtobusOzellik" />
+          </Key>
+          <Property Name="IDOtobusOzellik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OtobusOzellik" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama" Type="ntext" />
+        </EntityType>
+        <EntityType Name="OtobusTipleri">
+          <Key>
+            <PropertyRef Name="IDOtobusTipi" />
+          </Key>
+          <Property Name="IDOtobusTipi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OtobusTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="IDPersonel" />
+          </Key>
+          <Property Name="IDPersonel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DogumTarihi" Type="date" />
+          <Property Name="IseGirisTarihi" Type="date" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="60" />
+          <Property Name="SehirID" Type="int" Nullable="false" />
+          <Property Name="EvTelefonu" Type="varchar" MaxLength="24" />
+          <Property Name="CepTelefonu" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="Aciklama" Type="ntext" />
+          <Property Name="ForografAdresi" Type="nvarchar" MaxLength="255" />
+          <Property Name="Unvan" Type="int" Nullable="false" />
+          <Property Name="SubeID" Type="int" Nullable="false" />
+          <Property Name="TcKimlikNo" Type="char" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonelYetki">
+          <Key>
+            <PropertyRef Name="IDPersonelYetki" />
+          </Key>
+          <Property Name="IDPersonelYetki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelID" Type="int" Nullable="false" />
+          <Property Name="YetkiID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Promosyonlar">
+          <Key>
+            <PropertyRef Name="IDPromosyon" />
+          </Key>
+          <Property Name="IDPromosyon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PromosyonMiktari" Type="int" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="date" Nullable="false" />
+          <Property Name="BitisTarihi" Type="date" Nullable="false" />
+          <Property Name="PromosyonTipiID" Type="int" />
+        </EntityType>
+        <EntityType Name="PromosyonTipleri">
+          <Key>
+            <PropertyRef Name="IDPromosyonTipi" />
+          </Key>
+          <Property Name="IDPromosyonTipi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Promosyon" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Aciklama" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Sefer">
+          <Key>
+            <PropertyRef Name="IDSefer" />
+          </Key>
+          <Property Name="IDSefer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="date" Nullable="false" />
+          <Property Name="BitisTarihi" Type="date" Nullable="false" />
+          <Property Name="TahminiVarisSuresi" Type="int" />
+          <Property Name="SeferTipiID" Type="int" />
+          <Property Name="SeferDurum" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SeferDetay">
+          <Key>
+            <PropertyRef Name="IDSeferDetay" />
+          </Key>
+          <Property Name="IDSeferDetay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeferID" Type="int" Nullable="false" />
+          <Property Name="OtobusID" Type="int" />
+          <Property Name="SeferTarihi" Type="date" />
+          <Property Name="SeferSaati" Type="nvarchar" MaxLength="24" Nullable="false" />
+          <Property Name="Ucret" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SeferGuzergahi">
+          <Key>
+            <PropertyRef Name="IDSeferGuzergahi" />
+          </Key>
+          <Property Name="SeferID" Type="int" Nullable="false" />
+          <Property Name="GuzergahSirasi" Type="int" Nullable="false" />
+          <Property Name="GuzergahID" Type="int" Nullable="false" />
+          <Property Name="IDSeferGuzergahi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SeferPersonel">
+          <Key>
+            <PropertyRef Name="IDSeferPersonel" />
+          </Key>
+          <Property Name="IDSeferPersonel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeferDetayID" Type="int" Nullable="false" />
+          <Property Name="PersonelID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SeferTipleri">
+          <Key>
+            <PropertyRef Name="IDSeferTipi" />
+          </Key>
+          <Property Name="IDSeferTipi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeferTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Sehirler">
+          <Key>
+            <PropertyRef Name="IDSehir" />
+          </Key>
+          <Property Name="IDSehir" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sehir" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servis">
+          <Key>
+            <PropertyRef Name="IDServis" />
+          </Key>
+          <Property Name="IDServis" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeferDetayID" Type="int" Nullable="false" />
+          <Property Name="KalkisYeri" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="KalkisSaati" Type="nvarchar" MaxLength="24" />
+          <Property Name="OtobusID" Type="int" />
+          <Property Name="ServisUcreti" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Sube">
+          <Key>
+            <PropertyRef Name="IDSube" />
+          </Key>
+          <Property Name="IDSube" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="GuzergahID" Type="int" />
+          <Property Name="Telefon" Type="nchar" MaxLength="24" Nullable="false" />
+          <Property Name="Fax" Type="nchar" MaxLength="24" />
+        </EntityType>
+        <EntityType Name="Unvanlar">
+          <Key>
+            <PropertyRef Name="IDUnvan" />
+          </Key>
+          <Property Name="IDUnvan" Type="int" Nullable="false" />
+          <Property Name="Unvan" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VardiyaKayitlari">
+          <Key>
+            <PropertyRef Name="IDVardiye" />
+          </Key>
+          <Property Name="IDVardiye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelID" Type="int" Nullable="false" />
+          <Property Name="LoginGirisTarihi" Type="datetime" Nullable="false" />
+          <Property Name="LoginCikisTarihi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yetkiler">
+          <Key>
+            <PropertyRef Name="IDYetki" />
+          </Key>
+          <Property Name="IDYetki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yetki" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama" Type="ntext" />
+        </EntityType>
+        <Association Name="FK__SeferGuze__Guzer__6E01572D">
+          <End Role="Guzergahlar" Type="Self.Guzergahlar" Multiplicity="1" />
+          <End Role="SeferGuzergahi" Type="Self.SeferGuzergahi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guzergahlar">
+              <PropertyRef Name="IDGuzergah" />
+            </Principal>
+            <Dependent Role="SeferGuzergahi">
+              <PropertyRef Name="GuzergahID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bilet_KoltukDurumlari">
+          <End Role="KoltukDurumlari" Type="Self.KoltukDurumlari" Multiplicity="1" />
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KoltukDurumlari">
+              <PropertyRef Name="IDKoltukDurum" />
+            </Principal>
+            <Dependent Role="Bilet">
+              <PropertyRef Name="KoltukDurumuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bilet_KoltukTipleri">
+          <End Role="KoltukTipleri" Type="Self.KoltukTipleri" Multiplicity="0..1" />
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KoltukTipleri">
+              <PropertyRef Name="IDKoltukTipi" />
+            </Principal>
+            <Dependent Role="Bilet">
+              <PropertyRef Name="KoltukTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bilet_OdemeTipleri">
+          <End Role="OdemeTipleri" Type="Self.OdemeTipleri" Multiplicity="0..1" />
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OdemeTipleri">
+              <PropertyRef Name="IDOdemeTipi" />
+            </Principal>
+            <Dependent Role="Bilet">
+              <PropertyRef Name="OdemeTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bilet_Promosyonlar">
+          <End Role="Promosyonlar" Type="Self.Promosyonlar" Multiplicity="0..1" />
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promosyonlar">
+              <PropertyRef Name="IDPromosyon" />
+            </Principal>
+            <Dependent Role="Bilet">
+              <PropertyRef Name="PromosyonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_GuzergahGuzergahi_Sefer">
+          <End Role="Sefer" Type="Self.Sefer" Multiplicity="1" />
+          <End Role="SeferGuzergahi" Type="Self.SeferGuzergahi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sefer">
+              <PropertyRef Name="IDSefer" />
+            </Principal>
+            <Dependent Role="SeferGuzergahi">
+              <PropertyRef Name="SeferID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guzergahlar_Sehirler">
+          <End Role="Sehirler" Type="Self.Sehirler" Multiplicity="1" />
+          <End Role="Guzergahlar" Type="Self.Guzergahlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehirler">
+              <PropertyRef Name="IDSehir" />
+            </Principal>
+            <Dependent Role="Guzergahlar">
+              <PropertyRef Name="SehirID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Harcamalar_HarcamaTipleri">
+          <End Role="HarcamaTipleri" Type="Self.HarcamaTipleri" Multiplicity="1" />
+          <End Role="Harcamalar" Type="Self.Harcamalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HarcamaTipleri">
+              <PropertyRef Name="IDHarcamaTipi" />
+            </Principal>
+            <Dependent Role="Harcamalar">
+              <PropertyRef Name="HarcamaTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Harcamalar_SeferDetay">
+          <End Role="SeferDetay" Type="Self.SeferDetay" Multiplicity="1" />
+          <End Role="Harcamalar" Type="Self.Harcamalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeferDetay">
+              <PropertyRef Name="IDSeferDetay" />
+            </Principal>
+            <Dependent Role="Harcamalar">
+              <PropertyRef Name="SeferDetayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IslemKayitlari_IslemKayitTipleri">
+          <End Role="IslemKayitTipleri" Type="Self.IslemKayitTipleri" Multiplicity="1" />
+          <End Role="IslemKayitlari" Type="Self.IslemKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IslemKayitTipleri">
+              <PropertyRef Name="IDIslemKayitTipi" />
+            </Principal>
+            <Dependent Role="IslemKayitlari">
+              <PropertyRef Name="IslemKayitTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IslemKayitlari_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="IslemKayitlari" Type="Self.IslemKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="IslemKayitlari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Login_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Musteri_Sehirler">
+          <End Role="Sehirler" Type="Self.Sehirler" Multiplicity="0..1" />
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehirler">
+              <PropertyRef Name="IDSehir" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="SehirID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Otobus_OtobusDurumlari">
+          <End Role="OtobusDurumlari" Type="Self.OtobusDurumlari" Multiplicity="1" />
+          <End Role="Otobus" Type="Self.Otobus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtobusDurumlari">
+              <PropertyRef Name="IDOtobusDurumu" />
+            </Principal>
+            <Dependent Role="Otobus">
+              <PropertyRef Name="OtobusDurumuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Otobus_OtobusTipleri">
+          <End Role="OtobusTipleri" Type="Self.OtobusTipleri" Multiplicity="1" />
+          <End Role="Otobus" Type="Self.Otobus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtobusTipleri">
+              <PropertyRef Name="IDOtobusTipi" />
+            </Principal>
+            <Dependent Role="Otobus">
+              <PropertyRef Name="OtobusTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Otobus_Sube">
+          <End Role="Sube" Type="Self.Sube" Multiplicity="1" />
+          <End Role="Otobus" Type="Self.Otobus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sube">
+              <PropertyRef Name="IDSube" />
+            </Principal>
+            <Dependent Role="Otobus">
+              <PropertyRef Name="SubeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtobusOzellikDetay_Otobus">
+          <End Role="Otobus" Type="Self.Otobus" Multiplicity="1" />
+          <End Role="OtobusOzellikDetay" Type="Self.OtobusOzellikDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otobus">
+              <PropertyRef Name="IDOtobus" />
+            </Principal>
+            <Dependent Role="OtobusOzellikDetay">
+              <PropertyRef Name="OtobusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtobusOzellikDetay_OtobusOzellikleri">
+          <End Role="OtobusOzellikleri" Type="Self.OtobusOzellikleri" Multiplicity="1" />
+          <End Role="OtobusOzellikDetay" Type="Self.OtobusOzellikDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtobusOzellikleri">
+              <PropertyRef Name="IDOtobusOzellik" />
+            </Principal>
+            <Dependent Role="OtobusOzellikDetay">
+              <PropertyRef Name="OtobusOzellikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personel_Sehirler">
+          <End Role="Sehirler" Type="Self.Sehirler" Multiplicity="1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehirler">
+              <PropertyRef Name="IDSehir" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="SehirID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personel_Sube">
+          <End Role="Sube" Type="Self.Sube" Multiplicity="1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sube">
+              <PropertyRef Name="IDSube" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="SubeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personel_Unvanlar">
+          <End Role="Unvanlar" Type="Self.Unvanlar" Multiplicity="1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unvanlar">
+              <PropertyRef Name="IDUnvan" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="Unvan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonelYetki_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="PersonelYetki" Type="Self.PersonelYetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="PersonelYetki">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonelYetki_Yetkiler">
+          <End Role="Yetkiler" Type="Self.Yetkiler" Multiplicity="1" />
+          <End Role="PersonelYetki" Type="Self.PersonelYetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yetkiler">
+              <PropertyRef Name="IDYetki" />
+            </Principal>
+            <Dependent Role="PersonelYetki">
+              <PropertyRef Name="YetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promosyonlar_PromosyonTipleri">
+          <End Role="PromosyonTipleri" Type="Self.PromosyonTipleri" Multiplicity="0..1" />
+          <End Role="Promosyonlar" Type="Self.Promosyonlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PromosyonTipleri">
+              <PropertyRef Name="IDPromosyonTipi" />
+            </Principal>
+            <Dependent Role="Promosyonlar">
+              <PropertyRef Name="PromosyonTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sefer_SeferTipleri">
+          <End Role="SeferTipleri" Type="Self.SeferTipleri" Multiplicity="0..1" />
+          <End Role="Sefer" Type="Self.Sefer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeferTipleri">
+              <PropertyRef Name="IDSeferTipi" />
+            </Principal>
+            <Dependent Role="Sefer">
+              <PropertyRef Name="SeferTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeferDetay_Otobus">
+          <End Role="Otobus" Type="Self.Otobus" Multiplicity="0..1" />
+          <End Role="SeferDetay" Type="Self.SeferDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otobus">
+              <PropertyRef Name="IDOtobus" />
+            </Principal>
+            <Dependent Role="SeferDetay">
+              <PropertyRef Name="OtobusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeferDetay_Sefer">
+          <End Role="Sefer" Type="Self.Sefer" Multiplicity="1" />
+          <End Role="SeferDetay" Type="Self.SeferDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sefer">
+              <PropertyRef Name="IDSefer" />
+            </Principal>
+            <Dependent Role="SeferDetay">
+              <PropertyRef Name="SeferID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeferPersonel_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="SeferPersonel" Type="Self.SeferPersonel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="SeferPersonel">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeferPersonel_SeferDetay">
+          <End Role="SeferDetay" Type="Self.SeferDetay" Multiplicity="1" />
+          <End Role="SeferPersonel" Type="Self.SeferPersonel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeferDetay">
+              <PropertyRef Name="IDSeferDetay" />
+            </Principal>
+            <Dependent Role="SeferPersonel">
+              <PropertyRef Name="SeferDetayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servis_SeferDetay">
+          <End Role="SeferDetay" Type="Self.SeferDetay" Multiplicity="1" />
+          <End Role="Servis" Type="Self.Servis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeferDetay">
+              <PropertyRef Name="IDSeferDetay" />
+            </Principal>
+            <Dependent Role="Servis">
+              <PropertyRef Name="SeferDetayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sube_Guzergahlar">
+          <End Role="Guzergahlar" Type="Self.Guzergahlar" Multiplicity="0..1" />
+          <End Role="Sube" Type="Self.Sube" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guzergahlar">
+              <PropertyRef Name="IDGuzergah" />
+            </Principal>
+            <Dependent Role="Sube">
+              <PropertyRef Name="GuzergahID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VardiyaKayitlari_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="VardiyaKayitlari" Type="Self.VardiyaKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="VardiyaKayitlari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_Musteri_MusteriKartlari">
+          <End Role="MusteriKartlari" Type="Self.MusteriKartlari" Multiplicity="1" />
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MusteriKartlari">
+              <PropertyRef Name="IDKart" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="KartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pnuretSu_otobusModelStoreContainer">
+          <EntitySet Name="Bilet" EntityType="Self.Bilet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guzergahlar" EntityType="Self.Guzergahlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Harcamalar" EntityType="Self.Harcamalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HarcamaTipleri" EntityType="Self.HarcamaTipleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IslemKayitlari" EntityType="Self.IslemKayitlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IslemKayitTipleri" EntityType="Self.IslemKayitTipleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KoltukDurumlari" EntityType="Self.KoltukDurumlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KoltukTipleri" EntityType="Self.KoltukTipleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MusteriKartlari" EntityType="Self.MusteriKartlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OdemeTipleri" EntityType="Self.OdemeTipleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Otobus" EntityType="Self.Otobus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtobusDurumlari" EntityType="Self.OtobusDurumlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtobusOzellikDetay" EntityType="Self.OtobusOzellikDetay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtobusOzellikleri" EntityType="Self.OtobusOzellikleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtobusTipleri" EntityType="Self.OtobusTipleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelYetki" EntityType="Self.PersonelYetki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promosyonlar" EntityType="Self.Promosyonlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PromosyonTipleri" EntityType="Self.PromosyonTipleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sefer" EntityType="Self.Sefer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeferDetay" EntityType="Self.SeferDetay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeferGuzergahi" EntityType="Self.SeferGuzergahi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeferPersonel" EntityType="Self.SeferPersonel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeferTipleri" EntityType="Self.SeferTipleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sehirler" EntityType="Self.Sehirler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servis" EntityType="Self.Servis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sube" EntityType="Self.Sube" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unvanlar" EntityType="Self.Unvanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VardiyaKayitlari" EntityType="Self.VardiyaKayitlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yetkiler" EntityType="Self.Yetkiler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__SeferGuze__Guzer__6E01572D" Association="Self.FK__SeferGuze__Guzer__6E01572D">
+            <End Role="Guzergahlar" EntitySet="Guzergahlar" />
+            <End Role="SeferGuzergahi" EntitySet="SeferGuzergahi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bilet_KoltukDurumlari" Association="Self.FK_Bilet_KoltukDurumlari">
+            <End Role="KoltukDurumlari" EntitySet="KoltukDurumlari" />
+            <End Role="Bilet" EntitySet="Bilet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bilet_KoltukTipleri" Association="Self.FK_Bilet_KoltukTipleri">
+            <End Role="KoltukTipleri" EntitySet="KoltukTipleri" />
+            <End Role="Bilet" EntitySet="Bilet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bilet_OdemeTipleri" Association="Self.FK_Bilet_OdemeTipleri">
+            <End Role="OdemeTipleri" EntitySet="OdemeTipleri" />
+            <End Role="Bilet" EntitySet="Bilet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bilet_Promosyonlar" Association="Self.FK_Bilet_Promosyonlar">
+            <End Role="Promosyonlar" EntitySet="Promosyonlar" />
+            <End Role="Bilet" EntitySet="Bilet" />
+          </AssociationSet>
+          <AssociationSet Name="fk_GuzergahGuzergahi_Sefer" Association="Self.fk_GuzergahGuzergahi_Sefer">
+            <End Role="Sefer" EntitySet="Sefer" />
+            <End Role="SeferGuzergahi" EntitySet="SeferGuzergahi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guzergahlar_Sehirler" Association="Self.FK_Guzergahlar_Sehirler">
+            <End Role="Sehirler" EntitySet="Sehirler" />
+            <End Role="Guzergahlar" EntitySet="Guzergahlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Harcamalar_HarcamaTipleri" Association="Self.FK_Harcamalar_HarcamaTipleri">
+            <End Role="HarcamaTipleri" EntitySet="HarcamaTipleri" />
+            <End Role="Harcamalar" EntitySet="Harcamalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Harcamalar_SeferDetay" Association="Self.FK_Harcamalar_SeferDetay">
+            <End Role="SeferDetay" EntitySet="SeferDetay" />
+            <End Role="Harcamalar" EntitySet="Harcamalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IslemKayitlari_IslemKayitTipleri" Association="Self.FK_IslemKayitlari_IslemKayitTipleri">
+            <End Role="IslemKayitTipleri" EntitySet="IslemKayitTipleri" />
+            <End Role="IslemKayitlari" EntitySet="IslemKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IslemKayitlari_Personel" Association="Self.FK_IslemKayitlari_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="IslemKayitlari" EntitySet="IslemKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Login_Personel" Association="Self.FK_Login_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="Login" EntitySet="Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musteri_Sehirler" Association="Self.FK_Musteri_Sehirler">
+            <End Role="Sehirler" EntitySet="Sehirler" />
+            <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Otobus_OtobusDurumlari" Association="Self.FK_Otobus_OtobusDurumlari">
+            <End Role="OtobusDurumlari" EntitySet="OtobusDurumlari" />
+            <End Role="Otobus" EntitySet="Otobus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Otobus_OtobusTipleri" Association="Self.FK_Otobus_OtobusTipleri">
+            <End Role="OtobusTipleri" EntitySet="OtobusTipleri" />
+            <End Role="Otobus" EntitySet="Otobus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Otobus_Sube" Association="Self.FK_Otobus_Sube">
+            <End Role="Sube" EntitySet="Sube" />
+            <End Role="Otobus" EntitySet="Otobus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtobusOzellikDetay_Otobus" Association="Self.FK_OtobusOzellikDetay_Otobus">
+            <End Role="Otobus" EntitySet="Otobus" />
+            <End Role="OtobusOzellikDetay" EntitySet="OtobusOzellikDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtobusOzellikDetay_OtobusOzellikleri" Association="Self.FK_OtobusOzellikDetay_OtobusOzellikleri">
+            <End Role="OtobusOzellikleri" EntitySet="OtobusOzellikleri" />
+            <End Role="OtobusOzellikDetay" EntitySet="OtobusOzellikDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personel_Sehirler" Association="Self.FK_Personel_Sehirler">
+            <End Role="Sehirler" EntitySet="Sehirler" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personel_Sube" Association="Self.FK_Personel_Sube">
+            <End Role="Sube" EntitySet="Sube" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personel_Unvanlar" Association="Self.FK_Personel_Unvanlar">
+            <End Role="Unvanlar" EntitySet="Unvanlar" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonelYetki_Personel" Association="Self.FK_PersonelYetki_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelYetki" EntitySet="PersonelYetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonelYetki_Yetkiler" Association="Self.FK_PersonelYetki_Yetkiler">
+            <End Role="Yetkiler" EntitySet="Yetkiler" />
+            <End Role="PersonelYetki" EntitySet="PersonelYetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promosyonlar_PromosyonTipleri" Association="Self.FK_Promosyonlar_PromosyonTipleri">
+            <End Role="PromosyonTipleri" EntitySet="PromosyonTipleri" />
+            <End Role="Promosyonlar" EntitySet="Promosyonlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sefer_SeferTipleri" Association="Self.FK_Sefer_SeferTipleri">
+            <End Role="SeferTipleri" EntitySet="SeferTipleri" />
+            <End Role="Sefer" EntitySet="Sefer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeferDetay_Otobus" Association="Self.FK_SeferDetay_Otobus">
+            <End Role="Otobus" EntitySet="Otobus" />
+            <End Role="SeferDetay" EntitySet="SeferDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeferDetay_Sefer" Association="Self.FK_SeferDetay_Sefer">
+            <End Role="Sefer" EntitySet="Sefer" />
+            <End Role="SeferDetay" EntitySet="SeferDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeferPersonel_Personel" Association="Self.FK_SeferPersonel_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="SeferPersonel" EntitySet="SeferPersonel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeferPersonel_SeferDetay" Association="Self.FK_SeferPersonel_SeferDetay">
+            <End Role="SeferDetay" EntitySet="SeferDetay" />
+            <End Role="SeferPersonel" EntitySet="SeferPersonel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servis_SeferDetay" Association="Self.FK_Servis_SeferDetay">
+            <End Role="SeferDetay" EntitySet="SeferDetay" />
+            <End Role="Servis" EntitySet="Servis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sube_Guzergahlar" Association="Self.FK_Sube_Guzergahlar">
+            <End Role="Guzergahlar" EntitySet="Guzergahlar" />
+            <End Role="Sube" EntitySet="Sube" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VardiyaKayitlari_Personel" Association="Self.FK_VardiyaKayitlari_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="VardiyaKayitlari" EntitySet="VardiyaKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="PK_Musteri_MusteriKartlari" Association="Self.PK_Musteri_MusteriKartlari">
+            <End Role="MusteriKartlari" EntitySet="MusteriKartlari" />
+            <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pnuretSu_otobusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bilet">
+          <Key>
+            <PropertyRef Name="IDBilet" />
+          </Key>
+          <Property Name="IDBilet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" Nullable="false" />
+          <Property Name="SeferDetayID" Type="Int32" Nullable="false" />
+          <Property Name="MusteriID" Type="Int32" Nullable="false" />
+          <Property Name="PromosyonID" Type="Int32" />
+          <Property Name="Ucret" Type="Int32" Nullable="false" />
+          <Property Name="IslemTarihi" Type="DateTime" Precision="3" />
+          <Property Name="KoltukNo" Type="Int32" Nullable="false" />
+          <Property Name="KoltukTipiID" Type="Int32" />
+          <Property Name="OdemeTipiID" Type="Int32" />
+          <Property Name="KoltukDurumuID" Type="Int32" Nullable="false" />
+          <Property Name="BinisYeri" Type="Int32" Nullable="false" />
+          <Property Name="InisYeri" Type="Int32" Nullable="false" />
+          <Property Name="Durum" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="KoltukDurumlari" Relationship="Self.FK_Bilet_KoltukDurumlari" FromRole="Bilet" ToRole="KoltukDurumlari" />
+          <NavigationProperty Name="KoltukTipleri" Relationship="Self.FK_Bilet_KoltukTipleri" FromRole="Bilet" ToRole="KoltukTipleri" />
+          <NavigationProperty Name="OdemeTipleri" Relationship="Self.FK_Bilet_OdemeTipleri" FromRole="Bilet" ToRole="OdemeTipleri" />
+          <NavigationProperty Name="Promosyonlar" Relationship="Self.FK_Bilet_Promosyonlar" FromRole="Bilet" ToRole="Promosyonlar" />
+        </EntityType>
+        <EntityType Name="Guzergahlar">
+          <Key>
+            <PropertyRef Name="IDGuzergah" />
+          </Key>
+          <Property Name="IDGuzergah" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guzergah" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SehirID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SeferGuzergahi" Relationship="Self.FK__SeferGuze__Guzer__6E01572D" FromRole="Guzergahlar" ToRole="SeferGuzergahi" />
+          <NavigationProperty Name="Sehirler" Relationship="Self.FK_Guzergahlar_Sehirler" FromRole="Guzergahlar" ToRole="Sehirler" />
+          <NavigationProperty Name="Sube" Relationship="Self.FK_Sube_Guzergahlar" FromRole="Guzergahlar" ToRole="Sube" />
+        </EntityType>
+        <EntityType Name="Harcamalar">
+          <Key>
+            <PropertyRef Name="IDHarcama" />
+          </Key>
+          <Property Name="IDHarcama" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeferDetayID" Type="Int32" Nullable="false" />
+          <Property Name="HarcamaTipiID" Type="Int32" Nullable="false" />
+          <Property Name="Ucret" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HarcamaTipleri" Relationship="Self.FK_Harcamalar_HarcamaTipleri" FromRole="Harcamalar" ToRole="HarcamaTipleri" />
+          <NavigationProperty Name="SeferDetay" Relationship="pnuretSu_otobusModel.FK_Harcamalar_SeferDetay" FromRole="Harcamalar" ToRole="SeferDetay" />
+        </EntityType>
+        <EntityType Name="HarcamaTipleri">
+          <Key>
+            <PropertyRef Name="IDHarcamaTipi" />
+          </Key>
+          <Property Name="IDHarcamaTipi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HarcamaTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Harcamalar" Relationship="Self.FK_Harcamalar_HarcamaTipleri" FromRole="HarcamaTipleri" ToRole="Harcamalar" />
+        </EntityType>
+        <EntityType Name="IslemKayitlari">
+          <Key>
+            <PropertyRef Name="IDIslemKayit" />
+          </Key>
+          <Property Name="IDIslemKayit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" Nullable="false" />
+          <Property Name="IslemKayitTipiID" Type="Int32" Nullable="false" />
+          <Property Name="IslemKayitTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="IslemKayitTipleri" Relationship="Self.FK_IslemKayitlari_IslemKayitTipleri" FromRole="IslemKayitlari" ToRole="IslemKayitTipleri" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK_IslemKayitlari_Personel" FromRole="IslemKayitlari" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="IslemKayitTipleri">
+          <Key>
+            <PropertyRef Name="IDIslemKayitTipi" />
+          </Key>
+          <Property Name="IDIslemKayitTipi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IslemKayitTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="IslemKayitlari" Relationship="Self.FK_IslemKayitlari_IslemKayitTipleri" FromRole="IslemKayitTipleri" ToRole="IslemKayitlari" />
+        </EntityType>
+        <EntityType Name="KoltukDurumlari">
+          <Key>
+            <PropertyRef Name="IDKoltukDurum" />
+          </Key>
+          <Property Name="IDKoltukDurum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KoltukDurum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bilet" Relationship="Self.FK_Bilet_KoltukDurumlari" FromRole="KoltukDurumlari" ToRole="Bilet" />
+        </EntityType>
+        <EntityType Name="KoltukTipleri">
+          <Key>
+            <PropertyRef Name="IDKoltukTipi" />
+          </Key>
+          <Property Name="IDKoltukTipi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KoltukTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bilet" Relationship="Self.FK_Bilet_KoltukTipleri" FromRole="KoltukTipleri" ToRole="Bilet" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="Int32" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Parola" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK_Login_Personel" FromRole="Login" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="IDMusteri" />
+          </Key>
+          <Property Name="IDMusteri" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TcKimlikNo" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="KartID" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+          <Property Name="SehirID" Type="Int32" />
+          <Property Name="EPosta" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CepTelefonu" Type="String" MaxLength="24" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="MusteriKartlari" Relationship="Self.FK_Musteri_MusteriKartlari" FromRole="Musteri" ToRole="MusteriKartlari" />
+          <NavigationProperty Name="Sehirler" Relationship="Self.FK_Musteri_Sehirler" FromRole="Musteri" ToRole="Sehirler" />
+        </EntityType>
+        <EntityType Name="MusteriKartlari">
+          <Key>
+            <PropertyRef Name="IDKart" />
+          </Key>
+          <Property Name="IDKart" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Bakiye" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BiletSayisi" Type="Int32" />
+          <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_MusteriKartlari" FromRole="MusteriKartlari" ToRole="Musteri" />
+        </EntityType>
+        <EntityType Name="OdemeTipleri">
+          <Key>
+            <PropertyRef Name="IDOdemeTipi" />
+          </Key>
+          <Property Name="IDOdemeTipi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OdemeTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Bilet" Relationship="Self.FK_Bilet_OdemeTipleri" FromRole="OdemeTipleri" ToRole="Bilet" />
+        </EntityType>
+        <EntityType Name="Otobus">
+          <Key>
+            <PropertyRef Name="IDOtobus" />
+          </Key>
+          <Property Name="IDOtobus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubeID" Type="Int32" Nullable="false" />
+          <Property Name="OtobusTipiID" Type="Int32" Nullable="false" />
+          <Property Name="OtobusDurumuID" Type="Int32" Nullable="false" />
+          <Property Name="KoltukSayisi" Type="Int32" Nullable="false" />
+          <Property Name="PlakaNo" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OtobusDurumlari" Relationship="Self.FK_Otobus_OtobusDurumlari" FromRole="Otobus" ToRole="OtobusDurumlari" />
+          <NavigationProperty Name="OtobusTipleri" Relationship="Self.FK_Otobus_OtobusTipleri" FromRole="Otobus" ToRole="OtobusTipleri" />
+          <NavigationProperty Name="Sube" Relationship="Self.FK_Otobus_Sube" FromRole="Otobus" ToRole="Sube" />
+          <NavigationProperty Name="OtobusOzellikDetay" Relationship="Self.FK_OtobusOzellikDetay_Otobus" FromRole="Otobus" ToRole="OtobusOzellikDetay" />
+          <NavigationProperty Name="SeferDetay" Relationship="pnuretSu_otobusModel.FK_SeferDetay_Otobus" FromRole="Otobus" ToRole="SeferDetay" />
+        </EntityType>
+        <EntityType Name="OtobusDurumlari">
+          <Key>
+            <PropertyRef Name="IDOtobusDurumu" />
+          </Key>
+          <Property Name="IDOtobusDurumu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OtobusDurumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Otobus" Relationship="Self.FK_Otobus_OtobusDurumlari" FromRole="OtobusDurumlari" ToRole="Otobus" />
+        </EntityType>
+        <EntityType Name="OtobusOzellikDetay">
+          <Key>
+            <PropertyRef Name="IDOtobusOzellikDetay" />
+          </Key>
+          <Property Name="IDOtobusOzellikDetay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OtobusOzellikID" Type="Int32" Nullable="false" />
+          <Property Name="OtobusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Otobus" Relationship="Self.FK_OtobusOzellikDetay_Otobus" FromRole="OtobusOzellikDetay" ToRole="Otobus" />
+          <NavigationProperty Name="OtobusOzellikleri" Relationship="Self.FK_OtobusOzellikDetay_OtobusOzellikleri" FromRole="OtobusOzellikDetay" ToRole="OtobusOzellikleri" />
+        </EntityType>
+        <EntityType Name="OtobusOzellikleri">
+          <Key>
+            <PropertyRef Name="IDOtobusOzellik" />
+          </Key>
+          <Property Name="IDOtobusOzellik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OtobusOzellik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OtobusOzellikDetay" Relationship="Self.FK_OtobusOzellikDetay_OtobusOzellikleri" FromRole="OtobusOzellikleri" ToRole="OtobusOzellikDetay" />
+        </EntityType>
+        <EntityType Name="OtobusTipleri">
+          <Key>
+            <PropertyRef Name="IDOtobusTipi" />
+          </Key>
+          <Property Name="IDOtobusTipi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OtobusTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Otobus" Relationship="Self.FK_Otobus_OtobusTipleri" FromRole="OtobusTipleri" ToRole="Otobus" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="IDPersonel" />
+          </Key>
+          <Property Name="IDPersonel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+          <Property Name="IseGirisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Adres" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="SehirID" Type="Int32" Nullable="false" />
+          <Property Name="EvTelefonu" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="CepTelefonu" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ForografAdresi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Unvan" Type="Int32" Nullable="false" />
+          <Property Name="SubeID" Type="Int32" Nullable="false" />
+          <Property Name="TcKimlikNo" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="IslemKayitlari" Relationship="Self.FK_IslemKayitlari_Personel" FromRole="Personel" ToRole="IslemKayitlari" />
+          <NavigationProperty Name="Login" Relationship="Self.FK_Login_Personel" FromRole="Personel" ToRole="Login" />
+          <NavigationProperty Name="Sehirler" Relationship="Self.FK_Personel_Sehirler" FromRole="Personel" ToRole="Sehirler" />
+          <NavigationProperty Name="Sube" Relationship="Self.FK_Personel_Sube" FromRole="Personel" ToRole="Sube" />
+          <NavigationProperty Name="Unvanlar" Relationship="Self.FK_Personel_Unvanlar" FromRole="Personel" ToRole="Unvanlar" />
+          <NavigationProperty Name="PersonelYetki" Relationship="Self.FK_PersonelYetki_Personel" FromRole="Personel" ToRole="PersonelYetki" />
+          <NavigationProperty Name="SeferPersonel" Relationship="Self.FK_SeferPersonel_Personel" FromRole="Personel" ToRole="SeferPersonel" />
+          <NavigationProperty Name="VardiyaKayitlari" Relationship="Self.FK_VardiyaKayitlari_Personel" FromRole="Personel" ToRole="VardiyaKayitlari" />
+        </EntityType>
+        <EntityType Name="PersonelYetki">
+          <Key>
+            <PropertyRef Name="IDPersonelYetki" />
+          </Key>
+          <Property Name="IDPersonelYetki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" Nullable="false" />
+          <Property Name="YetkiID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK_PersonelYetki_Personel" FromRole="PersonelYetki" ToRole="Personel" />
+          <NavigationProperty Name="Yetkiler" Relationship="Self.FK_PersonelYetki_Yetkiler" FromRole="PersonelYetki" ToRole="Yetkiler" />
+        </EntityType>
+        <EntityType Name="Promosyonlar">
+          <Key>
+            <PropertyRef Name="IDPromosyon" />
+          </Key>
+          <Property Name="IDPromosyon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PromosyonMiktari" Type="Int32" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BitisTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PromosyonTipiID" Type="Int32" />
+          <NavigationProperty Name="Bilet" Relationship="Self.FK_Bilet_Promosyonlar" FromRole="Promosyonlar" ToRole="Bilet" />
+          <NavigationProperty Name="PromosyonTipleri" Relationship="Self.FK_Promosyonlar_PromosyonTipleri" FromRole="Promosyonlar" ToRole="PromosyonTipleri" />
+        </EntityType>
+        <EntityType Name="PromosyonTipleri">
+          <Key>
+            <PropertyRef Name="IDPromosyonTipi" />
+          </Key>
+          <Property Name="IDPromosyonTipi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Promosyon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Promosyonlar" Relationship="Self.FK_Promosyonlar_PromosyonTipleri" FromRole="PromosyonTipleri" ToRole="Promosyonlar" />
+        </EntityType>
+        <EntityType Name="SeferGuzergahi">
+          <Key>
+            <PropertyRef Name="IDSeferGuzergahi" />
+          </Key>
+          <Property Name="SeferID" Type="Int32" Nullable="false" />
+          <Property Name="GuzergahSirasi" Type="Int32" Nullable="false" />
+          <Property Name="GuzergahID" Type="Int32" Nullable="false" />
+          <Property Name="IDSeferGuzergahi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Guzergahlar" Relationship="Self.FK__SeferGuze__Guzer__6E01572D" FromRole="SeferGuzergahi" ToRole="Guzergahlar" />
+          <NavigationProperty Name="Sefer" Relationship="pnuretSu_otobusModel.fk_GuzergahGuzergahi_Sefer" FromRole="SeferGuzergahi" ToRole="Sefer" />
+        </EntityType>
+        <EntityType Name="SeferPersonel">
+          <Key>
+            <PropertyRef Name="IDSeferPersonel" />
+          </Key>
+          <Property Name="IDSeferPersonel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeferDetayID" Type="Int32" Nullable="false" />
+          <Property Name="PersonelID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK_SeferPersonel_Personel" FromRole="SeferPersonel" ToRole="Personel" />
+          <NavigationProperty Name="SeferDetay" Relationship="pnuretSu_otobusModel.FK_SeferPersonel_SeferDetay" FromRole="SeferPersonel" ToRole="SeferDetay" />
+        </EntityType>
+        <EntityType Name="SeferTipleri">
+          <Key>
+            <PropertyRef Name="IDSeferTipi" />
+          </Key>
+          <Property Name="IDSeferTipi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeferTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sefer" Relationship="pnuretSu_otobusModel.FK_Sefer_SeferTipleri" FromRole="SeferTipleri" ToRole="Sefer" />
+        </EntityType>
+        <EntityType Name="Sehirler">
+          <Key>
+            <PropertyRef Name="IDSehir" />
+          </Key>
+          <Property Name="IDSehir" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sehir" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Guzergahlar" Relationship="Self.FK_Guzergahlar_Sehirler" FromRole="Sehirler" ToRole="Guzergahlar" />
+          <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_Sehirler" FromRole="Sehirler" ToRole="Musteri" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK_Personel_Sehirler" FromRole="Sehirler" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="Sube">
+          <Key>
+            <PropertyRef Name="IDSube" />
+          </Key>
+          <Property Name="IDSube" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GuzergahID" Type="Int32" />
+          <Property Name="Telefon" Type="String" MaxLength="24" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Fax" Type="String" MaxLength="24" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Guzergahlar" Relationship="Self.FK_Sube_Guzergahlar" FromRole="Sube" ToRole="Guzergahlar" />
+          <NavigationProperty Name="Otobus" Relationship="Self.FK_Otobus_Sube" FromRole="Sube" ToRole="Otobus" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK_Personel_Sube" FromRole="Sube" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="Unvanlar">
+          <Key>
+            <PropertyRef Name="IDUnvan" />
+          </Key>
+          <Property Name="IDUnvan" Type="Int32" Nullable="false" />
+          <Property Name="Unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK_Personel_Unvanlar" FromRole="Unvanlar" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="VardiyaKayitlari">
+          <Key>
+            <PropertyRef Name="IDVardiye" />
+          </Key>
+          <Property Name="IDVardiye" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" Nullable="false" />
+          <Property Name="LoginGirisTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LoginCikisTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK_VardiyaKayitlari_Personel" FromRole="VardiyaKayitlari" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="Yetkiler">
+          <Key>
+            <PropertyRef Name="IDYetki" />
+          </Key>
+          <Property Name="IDYetki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yetki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PersonelYetki" Relationship="Self.FK_PersonelYetki_Yetkiler" FromRole="Yetkiler" ToRole="PersonelYetki" />
+        </EntityType>
+        <Association Name="FK_Bilet_KoltukDurumlari">
+          <End Role="KoltukDurumlari" Type="Self.KoltukDurumlari" Multiplicity="1" />
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KoltukDurumlari">
+              <PropertyRef Name="IDKoltukDurum" />
+            </Principal>
+            <Dependent Role="Bilet">
+              <PropertyRef Name="KoltukDurumuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bilet_KoltukTipleri">
+          <End Role="KoltukTipleri" Type="Self.KoltukTipleri" Multiplicity="0..1" />
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KoltukTipleri">
+              <PropertyRef Name="IDKoltukTipi" />
+            </Principal>
+            <Dependent Role="Bilet">
+              <PropertyRef Name="KoltukTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bilet_OdemeTipleri">
+          <End Role="OdemeTipleri" Type="Self.OdemeTipleri" Multiplicity="0..1" />
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OdemeTipleri">
+              <PropertyRef Name="IDOdemeTipi" />
+            </Principal>
+            <Dependent Role="Bilet">
+              <PropertyRef Name="OdemeTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bilet_Promosyonlar">
+          <End Role="Promosyonlar" Type="Self.Promosyonlar" Multiplicity="0..1" />
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promosyonlar">
+              <PropertyRef Name="IDPromosyon" />
+            </Principal>
+            <Dependent Role="Bilet">
+              <PropertyRef Name="PromosyonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SeferGuze__Guzer__6E01572D">
+          <End Role="Guzergahlar" Type="Self.Guzergahlar" Multiplicity="1" />
+          <End Role="SeferGuzergahi" Type="Self.SeferGuzergahi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guzergahlar">
+              <PropertyRef Name="IDGuzergah" />
+            </Principal>
+            <Dependent Role="SeferGuzergahi">
+              <PropertyRef Name="GuzergahID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guzergahlar_Sehirler">
+          <End Role="Sehirler" Type="Self.Sehirler" Multiplicity="1" />
+          <End Role="Guzergahlar" Type="Self.Guzergahlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehirler">
+              <PropertyRef Name="IDSehir" />
+            </Principal>
+            <Dependent Role="Guzergahlar">
+              <PropertyRef Name="SehirID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sube_Guzergahlar">
+          <End Role="Guzergahlar" Type="Self.Guzergahlar" Multiplicity="0..1" />
+          <End Role="Sube" Type="Self.Sube" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guzergahlar">
+              <PropertyRef Name="IDGuzergah" />
+            </Principal>
+            <Dependent Role="Sube">
+              <PropertyRef Name="GuzergahID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Harcamalar_HarcamaTipleri">
+          <End Role="HarcamaTipleri" Type="Self.HarcamaTipleri" Multiplicity="1" />
+          <End Role="Harcamalar" Type="Self.Harcamalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HarcamaTipleri">
+              <PropertyRef Name="IDHarcamaTipi" />
+            </Principal>
+            <Dependent Role="Harcamalar">
+              <PropertyRef Name="HarcamaTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IslemKayitlari_IslemKayitTipleri">
+          <End Role="IslemKayitTipleri" Type="Self.IslemKayitTipleri" Multiplicity="1" />
+          <End Role="IslemKayitlari" Type="Self.IslemKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IslemKayitTipleri">
+              <PropertyRef Name="IDIslemKayitTipi" />
+            </Principal>
+            <Dependent Role="IslemKayitlari">
+              <PropertyRef Name="IslemKayitTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IslemKayitlari_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="IslemKayitlari" Type="Self.IslemKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="IslemKayitlari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Login_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Musteri_MusteriKartlari">
+          <End Role="MusteriKartlari" Type="Self.MusteriKartlari" Multiplicity="1" />
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MusteriKartlari">
+              <PropertyRef Name="IDKart" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="KartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Musteri_Sehirler">
+          <End Role="Sehirler" Type="Self.Sehirler" Multiplicity="0..1" />
+          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehirler">
+              <PropertyRef Name="IDSehir" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="SehirID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Otobus_OtobusDurumlari">
+          <End Role="OtobusDurumlari" Type="Self.OtobusDurumlari" Multiplicity="1" />
+          <End Role="Otobus" Type="Self.Otobus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtobusDurumlari">
+              <PropertyRef Name="IDOtobusDurumu" />
+            </Principal>
+            <Dependent Role="Otobus">
+              <PropertyRef Name="OtobusDurumuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Otobus_OtobusTipleri">
+          <End Role="OtobusTipleri" Type="Self.OtobusTipleri" Multiplicity="1" />
+          <End Role="Otobus" Type="Self.Otobus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtobusTipleri">
+              <PropertyRef Name="IDOtobusTipi" />
+            </Principal>
+            <Dependent Role="Otobus">
+              <PropertyRef Name="OtobusTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Otobus_Sube">
+          <End Role="Sube" Type="Self.Sube" Multiplicity="1" />
+          <End Role="Otobus" Type="Self.Otobus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sube">
+              <PropertyRef Name="IDSube" />
+            </Principal>
+            <Dependent Role="Otobus">
+              <PropertyRef Name="SubeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtobusOzellikDetay_Otobus">
+          <End Role="Otobus" Type="Self.Otobus" Multiplicity="1" />
+          <End Role="OtobusOzellikDetay" Type="Self.OtobusOzellikDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otobus">
+              <PropertyRef Name="IDOtobus" />
+            </Principal>
+            <Dependent Role="OtobusOzellikDetay">
+              <PropertyRef Name="OtobusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtobusOzellikDetay_OtobusOzellikleri">
+          <End Role="OtobusOzellikleri" Type="Self.OtobusOzellikleri" Multiplicity="1" />
+          <End Role="OtobusOzellikDetay" Type="Self.OtobusOzellikDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OtobusOzellikleri">
+              <PropertyRef Name="IDOtobusOzellik" />
+            </Principal>
+            <Dependent Role="OtobusOzellikDetay">
+              <PropertyRef Name="OtobusOzellikID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personel_Sehirler">
+          <End Role="Sehirler" Type="Self.Sehirler" Multiplicity="1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehirler">
+              <PropertyRef Name="IDSehir" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="SehirID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personel_Sube">
+          <End Role="Sube" Type="Self.Sube" Multiplicity="1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sube">
+              <PropertyRef Name="IDSube" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="SubeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personel_Unvanlar">
+          <End Role="Unvanlar" Type="Self.Unvanlar" Multiplicity="1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unvanlar">
+              <PropertyRef Name="IDUnvan" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="Unvan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonelYetki_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="PersonelYetki" Type="Self.PersonelYetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="PersonelYetki">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeferPersonel_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="SeferPersonel" Type="Self.SeferPersonel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="SeferPersonel">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VardiyaKayitlari_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="VardiyaKayitlari" Type="Self.VardiyaKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="VardiyaKayitlari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonelYetki_Yetkiler">
+          <End Role="Yetkiler" Type="Self.Yetkiler" Multiplicity="1" />
+          <End Role="PersonelYetki" Type="Self.PersonelYetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yetkiler">
+              <PropertyRef Name="IDYetki" />
+            </Principal>
+            <Dependent Role="PersonelYetki">
+              <PropertyRef Name="YetkiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promosyonlar_PromosyonTipleri">
+          <End Role="PromosyonTipleri" Type="Self.PromosyonTipleri" Multiplicity="0..1" />
+          <End Role="Promosyonlar" Type="Self.Promosyonlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PromosyonTipleri">
+              <PropertyRef Name="IDPromosyonTipi" />
+            </Principal>
+            <Dependent Role="Promosyonlar">
+              <PropertyRef Name="PromosyonTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pnuretSu_otobusEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bilet" EntityType="Self.Bilet" />
+          <EntitySet Name="Guzergahlar" EntityType="Self.Guzergahlar" />
+          <EntitySet Name="Harcamalar" EntityType="Self.Harcamalar" />
+          <EntitySet Name="HarcamaTipleri" EntityType="Self.HarcamaTipleri" />
+          <EntitySet Name="IslemKayitlari" EntityType="Self.IslemKayitlari" />
+          <EntitySet Name="IslemKayitTipleri" EntityType="Self.IslemKayitTipleri" />
+          <EntitySet Name="KoltukDurumlari" EntityType="Self.KoltukDurumlari" />
+          <EntitySet Name="KoltukTipleri" EntityType="Self.KoltukTipleri" />
+          <EntitySet Name="Login" EntityType="Self.Login" />
+          <EntitySet Name="Musteri" EntityType="Self.Musteri" />
+          <EntitySet Name="MusteriKartlari" EntityType="Self.MusteriKartlari" />
+          <EntitySet Name="OdemeTipleri" EntityType="Self.OdemeTipleri" />
+          <EntitySet Name="Otobus" EntityType="Self.Otobus" />
+          <EntitySet Name="OtobusDurumlari" EntityType="Self.OtobusDurumlari" />
+          <EntitySet Name="OtobusOzellikDetay" EntityType="Self.OtobusOzellikDetay" />
+          <EntitySet Name="OtobusOzellikleri" EntityType="Self.OtobusOzellikleri" />
+          <EntitySet Name="OtobusTipleri" EntityType="Self.OtobusTipleri" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" />
+          <EntitySet Name="PersonelYetki" EntityType="Self.PersonelYetki" />
+          <EntitySet Name="Promosyonlar" EntityType="Self.Promosyonlar" />
+          <EntitySet Name="PromosyonTipleri" EntityType="Self.PromosyonTipleri" />
+          <EntitySet Name="SeferGuzergahi" EntityType="Self.SeferGuzergahi" />
+          <EntitySet Name="SeferPersonel" EntityType="Self.SeferPersonel" />
+          <EntitySet Name="SeferTipleri" EntityType="Self.SeferTipleri" />
+          <EntitySet Name="Sehirler" EntityType="Self.Sehirler" />
+          <EntitySet Name="Sube" EntityType="Self.Sube" />
+          <EntitySet Name="Unvanlar" EntityType="Self.Unvanlar" />
+          <EntitySet Name="VardiyaKayitlari" EntityType="Self.VardiyaKayitlari" />
+          <EntitySet Name="Yetkiler" EntityType="Self.Yetkiler" />
+          <AssociationSet Name="FK_Bilet_KoltukDurumlari" Association="Self.FK_Bilet_KoltukDurumlari">
+            <End Role="KoltukDurumlari" EntitySet="KoltukDurumlari" />
+            <End Role="Bilet" EntitySet="Bilet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bilet_KoltukTipleri" Association="Self.FK_Bilet_KoltukTipleri">
+            <End Role="KoltukTipleri" EntitySet="KoltukTipleri" />
+            <End Role="Bilet" EntitySet="Bilet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bilet_OdemeTipleri" Association="Self.FK_Bilet_OdemeTipleri">
+            <End Role="OdemeTipleri" EntitySet="OdemeTipleri" />
+            <End Role="Bilet" EntitySet="Bilet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bilet_Promosyonlar" Association="Self.FK_Bilet_Promosyonlar">
+            <End Role="Promosyonlar" EntitySet="Promosyonlar" />
+            <End Role="Bilet" EntitySet="Bilet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SeferGuze__Guzer__6E01572D" Association="Self.FK__SeferGuze__Guzer__6E01572D">
+            <End Role="Guzergahlar" EntitySet="Guzergahlar" />
+            <End Role="SeferGuzergahi" EntitySet="SeferGuzergahi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guzergahlar_Sehirler" Association="Self.FK_Guzergahlar_Sehirler">
+            <End Role="Sehirler" EntitySet="Sehirler" />
+            <End Role="Guzergahlar" EntitySet="Guzergahlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sube_Guzergahlar" Association="Self.FK_Sube_Guzergahlar">
+            <End Role="Guzergahlar" EntitySet="Guzergahlar" />
+            <End Role="Sube" EntitySet="Sube" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Harcamalar_HarcamaTipleri" Association="Self.FK_Harcamalar_HarcamaTipleri">
+            <End Role="HarcamaTipleri" EntitySet="HarcamaTipleri" />
+            <End Role="Harcamalar" EntitySet="Harcamalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IslemKayitlari_IslemKayitTipleri" Association="Self.FK_IslemKayitlari_IslemKayitTipleri">
+            <End Role="IslemKayitTipleri" EntitySet="IslemKayitTipleri" />
+            <End Role="IslemKayitlari" EntitySet="IslemKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IslemKayitlari_Personel" Association="Self.FK_IslemKayitlari_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="IslemKayitlari" EntitySet="IslemKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Login_Personel" Association="Self.FK_Login_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="Login" EntitySet="Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musteri_MusteriKartlari" Association="Self.FK_Musteri_MusteriKartlari">
+            <End Role="MusteriKartlari" EntitySet="MusteriKartlari" />
+            <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Musteri_Sehirler" Association="Self.FK_Musteri_Sehirler">
+            <End Role="Sehirler" EntitySet="Sehirler" />
+            <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Otobus_OtobusDurumlari" Association="Self.FK_Otobus_OtobusDurumlari">
+            <End Role="OtobusDurumlari" EntitySet="OtobusDurumlari" />
+            <End Role="Otobus" EntitySet="Otobus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Otobus_OtobusTipleri" Association="Self.FK_Otobus_OtobusTipleri">
+            <End Role="OtobusTipleri" EntitySet="OtobusTipleri" />
+            <End Role="Otobus" EntitySet="Otobus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Otobus_Sube" Association="Self.FK_Otobus_Sube">
+            <End Role="Sube" EntitySet="Sube" />
+            <End Role="Otobus" EntitySet="Otobus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtobusOzellikDetay_Otobus" Association="Self.FK_OtobusOzellikDetay_Otobus">
+            <End Role="Otobus" EntitySet="Otobus" />
+            <End Role="OtobusOzellikDetay" EntitySet="OtobusOzellikDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtobusOzellikDetay_OtobusOzellikleri" Association="Self.FK_OtobusOzellikDetay_OtobusOzellikleri">
+            <End Role="OtobusOzellikleri" EntitySet="OtobusOzellikleri" />
+            <End Role="OtobusOzellikDetay" EntitySet="OtobusOzellikDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personel_Sehirler" Association="Self.FK_Personel_Sehirler">
+            <End Role="Sehirler" EntitySet="Sehirler" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personel_Sube" Association="Self.FK_Personel_Sube">
+            <End Role="Sube" EntitySet="Sube" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personel_Unvanlar" Association="Self.FK_Personel_Unvanlar">
+            <End Role="Unvanlar" EntitySet="Unvanlar" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonelYetki_Personel" Association="Self.FK_PersonelYetki_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelYetki" EntitySet="PersonelYetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeferPersonel_Personel" Association="Self.FK_SeferPersonel_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="SeferPersonel" EntitySet="SeferPersonel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VardiyaKayitlari_Personel" Association="Self.FK_VardiyaKayitlari_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="VardiyaKayitlari" EntitySet="VardiyaKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonelYetki_Yetkiler" Association="Self.FK_PersonelYetki_Yetkiler">
+            <End Role="Yetkiler" EntitySet="Yetkiler" />
+            <End Role="PersonelYetki" EntitySet="PersonelYetki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promosyonlar_PromosyonTipleri" Association="Self.FK_Promosyonlar_PromosyonTipleri">
+            <End Role="PromosyonTipleri" EntitySet="PromosyonTipleri" />
+            <End Role="Promosyonlar" EntitySet="Promosyonlar" />
+          </AssociationSet>
+          <EntitySet Name="Sefer" EntityType="pnuretSu_otobusModel.Sefer" />
+          <AssociationSet Name="fk_GuzergahGuzergahi_Sefer" Association="pnuretSu_otobusModel.fk_GuzergahGuzergahi_Sefer">
+            <End Role="Sefer" EntitySet="Sefer" />
+            <End Role="SeferGuzergahi" EntitySet="SeferGuzergahi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sefer_SeferTipleri" Association="pnuretSu_otobusModel.FK_Sefer_SeferTipleri">
+            <End Role="SeferTipleri" EntitySet="SeferTipleri" />
+            <End Role="Sefer" EntitySet="Sefer" />
+          </AssociationSet>
+          <EntitySet Name="SeferDetay" EntityType="pnuretSu_otobusModel.SeferDetay" />
+          <AssociationSet Name="FK_Harcamalar_SeferDetay" Association="pnuretSu_otobusModel.FK_Harcamalar_SeferDetay">
+            <End Role="SeferDetay" EntitySet="SeferDetay" />
+            <End Role="Harcamalar" EntitySet="Harcamalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeferDetay_Otobus" Association="pnuretSu_otobusModel.FK_SeferDetay_Otobus">
+            <End Role="Otobus" EntitySet="Otobus" />
+            <End Role="SeferDetay" EntitySet="SeferDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeferDetay_Sefer" Association="pnuretSu_otobusModel.FK_SeferDetay_Sefer">
+            <End Role="Sefer" EntitySet="Sefer" />
+            <End Role="SeferDetay" EntitySet="SeferDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeferPersonel_SeferDetay" Association="pnuretSu_otobusModel.FK_SeferPersonel_SeferDetay">
+            <End Role="SeferDetay" EntitySet="SeferDetay" />
+            <End Role="SeferPersonel" EntitySet="SeferPersonel" />
+          </AssociationSet>
+          <EntitySet Name="Servis" EntityType="pnuretSu_otobusModel.Servis" />
+          <AssociationSet Name="FK_Servis_SeferDetay" Association="pnuretSu_otobusModel.FK_Servis_SeferDetay">
+            <End Role="SeferDetay" EntitySet="SeferDetay" />
+            <End Role="Servis" EntitySet="Servis" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Sefer">
+          <Key>
+            <PropertyRef Name="IDSefer" />
+          </Key>
+          <Property Name="IDSefer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BitisTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TahminiVarisSuresi" Type="Int32" />
+          <Property Name="SeferTipiID" Type="Int32" />
+          <Property Name="SeferDurum" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SeferGuzergahi" Relationship="pnuretSu_otobusModel.fk_GuzergahGuzergahi_Sefer" FromRole="Sefer" ToRole="SeferGuzergahi" />
+          <NavigationProperty Name="SeferTipleri" Relationship="pnuretSu_otobusModel.FK_Sefer_SeferTipleri" FromRole="Sefer" ToRole="SeferTipleri" />
+          <NavigationProperty Name="SeferDetay" Relationship="pnuretSu_otobusModel.FK_SeferDetay_Sefer" FromRole="Sefer" ToRole="SeferDetay" />
+        </EntityType>
+        <Association Name="fk_GuzergahGuzergahi_Sefer">
+          <End Type="pnuretSu_otobusModel.Sefer" Role="Sefer" Multiplicity="1" />
+          <End Type="pnuretSu_otobusModel.SeferGuzergahi" Role="SeferGuzergahi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sefer">
+              <PropertyRef Name="IDSefer" />
+            </Principal>
+            <Dependent Role="SeferGuzergahi">
+              <PropertyRef Name="SeferID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sefer_SeferTipleri">
+          <End Type="pnuretSu_otobusModel.SeferTipleri" Role="SeferTipleri" Multiplicity="0..1" />
+          <End Type="pnuretSu_otobusModel.Sefer" Role="Sefer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeferTipleri">
+              <PropertyRef Name="IDSeferTipi" />
+            </Principal>
+            <Dependent Role="Sefer">
+              <PropertyRef Name="SeferTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SeferDetay">
+          <Key>
+            <PropertyRef Name="IDSeferDetay" />
+          </Key>
+          <Property Name="IDSeferDetay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeferID" Type="Int32" Nullable="false" />
+          <Property Name="OtobusID" Type="Int32" />
+          <Property Name="SeferTarihi" Type="DateTime" Precision="0" />
+          <Property Name="SeferSaati" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="Ucret" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Harcamalar" Relationship="pnuretSu_otobusModel.FK_Harcamalar_SeferDetay" FromRole="SeferDetay" ToRole="Harcamalar" />
+          <NavigationProperty Name="Otobus" Relationship="pnuretSu_otobusModel.FK_SeferDetay_Otobus" FromRole="SeferDetay" ToRole="Otobus" />
+          <NavigationProperty Name="Sefer" Relationship="pnuretSu_otobusModel.FK_SeferDetay_Sefer" FromRole="SeferDetay" ToRole="Sefer" />
+          <NavigationProperty Name="SeferPersonel" Relationship="pnuretSu_otobusModel.FK_SeferPersonel_SeferDetay" FromRole="SeferDetay" ToRole="SeferPersonel" />
+          <NavigationProperty Name="Servis" Relationship="pnuretSu_otobusModel.FK_Servis_SeferDetay" FromRole="SeferDetay" ToRole="Servis" />
+        </EntityType>
+        <Association Name="FK_Harcamalar_SeferDetay">
+          <End Type="pnuretSu_otobusModel.SeferDetay" Role="SeferDetay" Multiplicity="1" />
+          <End Type="pnuretSu_otobusModel.Harcamalar" Role="Harcamalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeferDetay">
+              <PropertyRef Name="IDSeferDetay" />
+            </Principal>
+            <Dependent Role="Harcamalar">
+              <PropertyRef Name="SeferDetayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeferDetay_Otobus">
+          <End Type="pnuretSu_otobusModel.Otobus" Role="Otobus" Multiplicity="0..1" />
+          <End Type="pnuretSu_otobusModel.SeferDetay" Role="SeferDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otobus">
+              <PropertyRef Name="IDOtobus" />
+            </Principal>
+            <Dependent Role="SeferDetay">
+              <PropertyRef Name="OtobusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeferDetay_Sefer">
+          <End Type="pnuretSu_otobusModel.Sefer" Role="Sefer" Multiplicity="1" />
+          <End Type="pnuretSu_otobusModel.SeferDetay" Role="SeferDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sefer">
+              <PropertyRef Name="IDSefer" />
+            </Principal>
+            <Dependent Role="SeferDetay">
+              <PropertyRef Name="SeferID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeferPersonel_SeferDetay">
+          <End Type="pnuretSu_otobusModel.SeferDetay" Role="SeferDetay" Multiplicity="1" />
+          <End Type="pnuretSu_otobusModel.SeferPersonel" Role="SeferPersonel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeferDetay">
+              <PropertyRef Name="IDSeferDetay" />
+            </Principal>
+            <Dependent Role="SeferPersonel">
+              <PropertyRef Name="SeferDetayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Servis">
+          <Key>
+            <PropertyRef Name="IDServis" />
+          </Key>
+          <Property Name="IDServis" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeferDetayID" Type="Int32" Nullable="false" />
+          <Property Name="KalkisYeri" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="KalkisSaati" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="OtobusID" Type="Int32" />
+          <Property Name="ServisUcreti" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="SeferDetay" Relationship="pnuretSu_otobusModel.FK_Servis_SeferDetay" FromRole="Servis" ToRole="SeferDetay" />
+        </EntityType>
+        <Association Name="FK_Servis_SeferDetay">
+          <End Type="pnuretSu_otobusModel.SeferDetay" Role="SeferDetay" Multiplicity="1" />
+          <End Type="pnuretSu_otobusModel.Servis" Role="Servis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SeferDetay">
+              <PropertyRef Name="IDSeferDetay" />
+            </Principal>
+            <Dependent Role="Servis">
+              <PropertyRef Name="SeferDetayID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pnuretSu_otobusModelStoreContainer" CdmEntityContainer="pnuretSu_otobusEntities">
+          <EntitySetMapping Name="Bilet">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Bilet">
+              <MappingFragment StoreEntitySet="Bilet">
+                <ScalarProperty Name="IDBilet" ColumnName="IDBilet" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="SeferDetayID" ColumnName="SeferDetayID" />
+                <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+                <ScalarProperty Name="PromosyonID" ColumnName="PromosyonID" />
+                <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+                <ScalarProperty Name="IslemTarihi" ColumnName="IslemTarihi" />
+                <ScalarProperty Name="KoltukNo" ColumnName="KoltukNo" />
+                <ScalarProperty Name="KoltukTipiID" ColumnName="KoltukTipiID" />
+                <ScalarProperty Name="OdemeTipiID" ColumnName="OdemeTipiID" />
+                <ScalarProperty Name="KoltukDurumuID" ColumnName="KoltukDurumuID" />
+                <ScalarProperty Name="BinisYeri" ColumnName="BinisYeri" />
+                <ScalarProperty Name="InisYeri" ColumnName="InisYeri" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guzergahlar">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Guzergahlar">
+              <MappingFragment StoreEntitySet="Guzergahlar">
+                <ScalarProperty Name="IDGuzergah" ColumnName="IDGuzergah" />
+                <ScalarProperty Name="Guzergah" ColumnName="Guzergah" />
+                <ScalarProperty Name="SehirID" ColumnName="SehirID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Harcamalar">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Harcamalar">
+              <MappingFragment StoreEntitySet="Harcamalar">
+                <ScalarProperty Name="IDHarcama" ColumnName="IDHarcama" />
+                <ScalarProperty Name="SeferDetayID" ColumnName="SeferDetayID" />
+                <ScalarProperty Name="HarcamaTipiID" ColumnName="HarcamaTipiID" />
+                <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HarcamaTipleri">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.HarcamaTipleri">
+              <MappingFragment StoreEntitySet="HarcamaTipleri">
+                <ScalarProperty Name="IDHarcamaTipi" ColumnName="IDHarcamaTipi" />
+                <ScalarProperty Name="HarcamaTipi" ColumnName="HarcamaTipi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IslemKayitlari">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.IslemKayitlari">
+              <MappingFragment StoreEntitySet="IslemKayitlari">
+                <ScalarProperty Name="IDIslemKayit" ColumnName="IDIslemKayit" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="IslemKayitTipiID" ColumnName="IslemKayitTipiID" />
+                <ScalarProperty Name="IslemKayitTarihi" ColumnName="IslemKayitTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IslemKayitTipleri">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.IslemKayitTipleri">
+              <MappingFragment StoreEntitySet="IslemKayitTipleri">
+                <ScalarProperty Name="IDIslemKayitTipi" ColumnName="IDIslemKayitTipi" />
+                <ScalarProperty Name="IslemKayitTipi" ColumnName="IslemKayitTipi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KoltukDurumlari">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.KoltukDurumlari">
+              <MappingFragment StoreEntitySet="KoltukDurumlari">
+                <ScalarProperty Name="IDKoltukDurum" ColumnName="IDKoltukDurum" />
+                <ScalarProperty Name="KoltukDurum" ColumnName="KoltukDurum" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KoltukTipleri">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.KoltukTipleri">
+              <MappingFragment StoreEntitySet="KoltukTipleri">
+                <ScalarProperty Name="IDKoltukTipi" ColumnName="IDKoltukTipi" />
+                <ScalarProperty Name="KoltukTipi" ColumnName="KoltukTipi" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Login">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Parola" ColumnName="Parola" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteri">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Musteri">
+              <MappingFragment StoreEntitySet="Musteri">
+                <ScalarProperty Name="IDMusteri" ColumnName="IDMusteri" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="TcKimlikNo" ColumnName="TcKimlikNo" />
+                <ScalarProperty Name="KartID" ColumnName="KartID" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="SehirID" ColumnName="SehirID" />
+                <ScalarProperty Name="EPosta" ColumnName="EPosta" />
+                <ScalarProperty Name="CepTelefonu" ColumnName="CepTelefonu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MusteriKartlari">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.MusteriKartlari">
+              <MappingFragment StoreEntitySet="MusteriKartlari">
+                <ScalarProperty Name="IDKart" ColumnName="IDKart" />
+                <ScalarProperty Name="Bakiye" ColumnName="Bakiye" />
+                <ScalarProperty Name="BiletSayisi" ColumnName="BiletSayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OdemeTipleri">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.OdemeTipleri">
+              <MappingFragment StoreEntitySet="OdemeTipleri">
+                <ScalarProperty Name="IDOdemeTipi" ColumnName="IDOdemeTipi" />
+                <ScalarProperty Name="OdemeTipi" ColumnName="OdemeTipi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Otobus">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Otobus">
+              <MappingFragment StoreEntitySet="Otobus">
+                <ScalarProperty Name="IDOtobus" ColumnName="IDOtobus" />
+                <ScalarProperty Name="SubeID" ColumnName="SubeID" />
+                <ScalarProperty Name="OtobusTipiID" ColumnName="OtobusTipiID" />
+                <ScalarProperty Name="OtobusDurumuID" ColumnName="OtobusDurumuID" />
+                <ScalarProperty Name="KoltukSayisi" ColumnName="KoltukSayisi" />
+                <ScalarProperty Name="PlakaNo" ColumnName="PlakaNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtobusDurumlari">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.OtobusDurumlari">
+              <MappingFragment StoreEntitySet="OtobusDurumlari">
+                <ScalarProperty Name="IDOtobusDurumu" ColumnName="IDOtobusDurumu" />
+                <ScalarProperty Name="OtobusDurumu" ColumnName="OtobusDurumu" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtobusOzellikDetay">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.OtobusOzellikDetay">
+              <MappingFragment StoreEntitySet="OtobusOzellikDetay">
+                <ScalarProperty Name="IDOtobusOzellikDetay" ColumnName="IDOtobusOzellikDetay" />
+                <ScalarProperty Name="OtobusOzellikID" ColumnName="OtobusOzellikID" />
+                <ScalarProperty Name="OtobusID" ColumnName="OtobusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtobusOzellikleri">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.OtobusOzellikleri">
+              <MappingFragment StoreEntitySet="OtobusOzellikleri">
+                <ScalarProperty Name="IDOtobusOzellik" ColumnName="IDOtobusOzellik" />
+                <ScalarProperty Name="OtobusOzellik" ColumnName="OtobusOzellik" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtobusTipleri">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.OtobusTipleri">
+              <MappingFragment StoreEntitySet="OtobusTipleri">
+                <ScalarProperty Name="IDOtobusTipi" ColumnName="IDOtobusTipi" />
+                <ScalarProperty Name="OtobusTipi" ColumnName="OtobusTipi" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personel">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Personel">
+              <MappingFragment StoreEntitySet="Personel">
+                <ScalarProperty Name="IDPersonel" ColumnName="IDPersonel" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="IseGirisTarihi" ColumnName="IseGirisTarihi" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="SehirID" ColumnName="SehirID" />
+                <ScalarProperty Name="EvTelefonu" ColumnName="EvTelefonu" />
+                <ScalarProperty Name="CepTelefonu" ColumnName="CepTelefonu" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="ForografAdresi" ColumnName="ForografAdresi" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="SubeID" ColumnName="SubeID" />
+                <ScalarProperty Name="TcKimlikNo" ColumnName="TcKimlikNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelYetki">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.PersonelYetki">
+              <MappingFragment StoreEntitySet="PersonelYetki">
+                <ScalarProperty Name="IDPersonelYetki" ColumnName="IDPersonelYetki" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="YetkiID" ColumnName="YetkiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promosyonlar">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Promosyonlar">
+              <MappingFragment StoreEntitySet="Promosyonlar">
+                <ScalarProperty Name="IDPromosyon" ColumnName="IDPromosyon" />
+                <ScalarProperty Name="PromosyonMiktari" ColumnName="PromosyonMiktari" />
+                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
+                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
+                <ScalarProperty Name="PromosyonTipiID" ColumnName="PromosyonTipiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromosyonTipleri">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.PromosyonTipleri">
+              <MappingFragment StoreEntitySet="PromosyonTipleri">
+                <ScalarProperty Name="IDPromosyonTipi" ColumnName="IDPromosyonTipi" />
+                <ScalarProperty Name="Promosyon" ColumnName="Promosyon" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeferGuzergahi">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.SeferGuzergahi">
+              <MappingFragment StoreEntitySet="SeferGuzergahi">
+                <ScalarProperty Name="SeferID" ColumnName="SeferID" />
+                <ScalarProperty Name="GuzergahSirasi" ColumnName="GuzergahSirasi" />
+                <ScalarProperty Name="GuzergahID" ColumnName="GuzergahID" />
+                <ScalarProperty Name="IDSeferGuzergahi" ColumnName="IDSeferGuzergahi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeferPersonel">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.SeferPersonel">
+              <MappingFragment StoreEntitySet="SeferPersonel">
+                <ScalarProperty Name="IDSeferPersonel" ColumnName="IDSeferPersonel" />
+                <ScalarProperty Name="SeferDetayID" ColumnName="SeferDetayID" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeferTipleri">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.SeferTipleri">
+              <MappingFragment StoreEntitySet="SeferTipleri">
+                <ScalarProperty Name="IDSeferTipi" ColumnName="IDSeferTipi" />
+                <ScalarProperty Name="SeferTipi" ColumnName="SeferTipi" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sehirler">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Sehirler">
+              <MappingFragment StoreEntitySet="Sehirler">
+                <ScalarProperty Name="IDSehir" ColumnName="IDSehir" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sube">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Sube">
+              <MappingFragment StoreEntitySet="Sube">
+                <ScalarProperty Name="IDSube" ColumnName="IDSube" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="GuzergahID" ColumnName="GuzergahID" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unvanlar">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Unvanlar">
+              <MappingFragment StoreEntitySet="Unvanlar">
+                <ScalarProperty Name="IDUnvan" ColumnName="IDUnvan" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VardiyaKayitlari">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.VardiyaKayitlari">
+              <MappingFragment StoreEntitySet="VardiyaKayitlari">
+                <ScalarProperty Name="IDVardiye" ColumnName="IDVardiye" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="LoginGirisTarihi" ColumnName="LoginGirisTarihi" />
+                <ScalarProperty Name="LoginCikisTarihi" ColumnName="LoginCikisTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yetkiler">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Yetkiler">
+              <MappingFragment StoreEntitySet="Yetkiler">
+                <ScalarProperty Name="IDYetki" ColumnName="IDYetki" />
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sefer">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Sefer">
+              <MappingFragment StoreEntitySet="Sefer">
+                <ScalarProperty Name="SeferDurum" ColumnName="SeferDurum" />
+                <ScalarProperty Name="SeferTipiID" ColumnName="SeferTipiID" />
+                <ScalarProperty Name="TahminiVarisSuresi" ColumnName="TahminiVarisSuresi" />
+                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
+                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
+                <ScalarProperty Name="IDSefer" ColumnName="IDSefer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeferDetay">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.SeferDetay">
+              <MappingFragment StoreEntitySet="SeferDetay">
+                <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+                <ScalarProperty Name="SeferSaati" ColumnName="SeferSaati" />
+                <ScalarProperty Name="SeferTarihi" ColumnName="SeferTarihi" />
+                <ScalarProperty Name="OtobusID" ColumnName="OtobusID" />
+                <ScalarProperty Name="SeferID" ColumnName="SeferID" />
+                <ScalarProperty Name="IDSeferDetay" ColumnName="IDSeferDetay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servis">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Servis">
+              <MappingFragment StoreEntitySet="Servis">
+                <ScalarProperty Name="ServisUcreti" ColumnName="ServisUcreti" />
+                <ScalarProperty Name="OtobusID" ColumnName="OtobusID" />
+                <ScalarProperty Name="KalkisSaati" ColumnName="KalkisSaati" />
+                <ScalarProperty Name="KalkisYeri" ColumnName="KalkisYeri" />
+                <ScalarProperty Name="SeferDetayID" ColumnName="SeferDetayID" />
+                <ScalarProperty Name="IDServis" ColumnName="IDServis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

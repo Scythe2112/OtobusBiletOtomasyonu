@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a112994ef16445d1ba9062706fd1ed71" Name="Diagram1">
+        <EntityTypeShape EntityType="cnrotomasyonModel.Bilet" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Guzergahlar" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Harcamalar" Width="1.5" PointX="9.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.HarcamaTipleri" Width="1.5" PointX="7.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.IslemKayitlari" Width="1.5" PointX="8.25" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.IslemKayitTipleri" Width="1.5" PointX="6" PointY="35.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.KoltukDurumlari" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.KoltukTipleri" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Login" Width="1.5" PointX="5.25" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Musteri" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.MusteriKartlari" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.OdemeTipleri" Width="1.5" PointX="3" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Otobus" Width="1.5" PointX="9.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.OtobusDurumlari" Width="1.5" PointX="7.5" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.OtobusOzellikDetay" Width="1.5" PointX="12" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.OtobusOzellikleri" Width="1.5" PointX="9.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.OtobusTipleri" Width="1.5" PointX="7.5" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Personel" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.PersonelYetki" Width="1.5" PointX="12.25" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Promosyonlar" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.PromosyonTipleri" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Sefer" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.SeferDetay" Width="1.5" PointX="7.5" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.SeferGuzergahi" Width="1.5" PointX="7.5" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.SeferPersonel" Width="1.5" PointX="12.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.SeferTipleri" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Sehirler" Width="1.5" PointX="0.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Servis" Width="1.5" PointX="9.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Sube" Width="1.5" PointX="5.25" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Unvanlar" Width="1.5" PointX="0.75" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.VardiyaKayitlari" Width="1.5" PointX="5.25" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cnrotomasyonModel.Yetkiler" Width="1.5" PointX="10" PointY="34.5" IsExpanded="true" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Bilet_KoltukDurumlari" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Bilet_KoltukTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Bilet_OdemeTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Bilet_Promosyonlar" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Guzergahlar_Sehirler" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Sefer_Guzergahlar" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Sefer_Guzergahlar1" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Sube_Guzergahlar" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Harcamalar_HarcamaTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Harcamalar_SeferDetay" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_IslemKayitlari_IslemKayitTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_IslemKayitlari_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Login_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Musteri_MusteriKartlari" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Musteri_Sehirler" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Otobus_OtobusDurumlari" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Otobus_OtobusTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Otobus_SeferDetay" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Otobus_Sube" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_OtobusOzellikDetay_Otobus" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_OtobusOzellikDetay_OtobusOzellikleri" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Personel_Sehirler" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Personel_Unvanlar" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_PersonelYetki_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_SeferPersonel_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_VardiyaKayitlari_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_PersonelYetki_Yetkiler" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Promosyonlar_PromosyonTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Sefer_SeferTipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_SeferDetay_Sefer" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_SeferGuzergahi_Sefer" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_SeferPersonel_SeferDetay" ManuallyRouted="false" />
+        <AssociationConnector Association="cnrotomasyonModel.FK_Servis_SeferDetay" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
