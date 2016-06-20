@@ -50,6 +50,10 @@ namespace OOtomasyon.BLL
                 {
                     (item as ListBox).Items.Clear();
                 }
+                else if (item is MaskedTextBox)
+                {
+                    (item as MaskedTextBox).Text = string.Empty;
+                }
             }
         }
 
@@ -66,7 +70,6 @@ namespace OOtomasyon.BLL
             if (!acikMi)
             {
                 gelenForm.MdiParent = parentForm;
-                gelenForm.WindowState = FormWindowState.Maximized;
                 gelenForm.Show();
             }
         }

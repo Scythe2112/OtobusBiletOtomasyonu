@@ -35,6 +35,20 @@ namespace OOtomasyon.BLL.Repositories
             return db.Personel.Find(itemID);
         }
 
+        public List<Modul> SelectModulsByID(int perId)
+        {
+            List<Modul> lst = new List<Modul>();
+
+            foreach (Yetki item in SelectByID(perId).Yetki)
+            {
+                if (!lst.Contains(item.Formlar.Modul))
+                {
+                    lst.Add(item.Formlar.Modul);
+                }
+            }
+            return lst;
+        }
+
         public Personel SelectByTC(string itemTc)
         {
             return db.Personel.FirstOrDefault(x=>x.TcKimlikNo== itemTc);

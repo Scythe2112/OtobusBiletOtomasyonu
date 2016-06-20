@@ -19,6 +19,13 @@ namespace OOtomasyon.BLL.Repositories
             db.SaveChanges();
         }
 
+        public void DeleteAll(int itemID)
+        {
+            SeferDetay deleted = db.SeferDetay.Find(itemID);
+            db.Servis.RemoveRange(deleted.Servis);
+            db.SaveChanges();
+        }
+
         public void Insert(Servis item)
         {
             db.Servis.Add(item);

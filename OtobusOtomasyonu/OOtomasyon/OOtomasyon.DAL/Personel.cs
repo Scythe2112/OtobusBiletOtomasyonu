@@ -18,8 +18,8 @@ namespace OOtomasyon.DAL
         public Personel()
         {
             this.IslemKayitlari = new HashSet<IslemKayitlari>();
-            this.PersonelYetki = new HashSet<PersonelYetki>();
             this.SeferPersonel = new HashSet<SeferPersonel>();
+            this.Yetki = new HashSet<Yetki>();
             this.VardiyaKayitlari = new HashSet<VardiyaKayitlari>();
         }
     
@@ -45,9 +45,9 @@ namespace OOtomasyon.DAL
         public virtual Sube Sube { get; set; }
         public virtual Unvanlar Unvanlar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PersonelYetki> PersonelYetki { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SeferPersonel> SeferPersonel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Yetki> Yetki { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VardiyaKayitlari> VardiyaKayitlari { get; set; }
     }

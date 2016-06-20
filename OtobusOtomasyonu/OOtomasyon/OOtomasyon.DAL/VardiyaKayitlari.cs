@@ -16,8 +16,8 @@ namespace OOtomasyon.DAL
     {
         public int IDVardiye { get; set; }
         public int PersonelID { get; set; }
-        public System.DateTime LoginGirisTarihi { get; set; }
-        public System.DateTime LoginCikisTarihi { get; set; }
+        public Nullable<System.DateTime> LoginGirisTarihi { get; set; }
+        public Nullable<System.DateTime> LoginCikisTarihi { get; set; }
     
         public virtual Personel Personel { get; set; }
     }

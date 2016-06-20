@@ -25,7 +25,7 @@ namespace OOtomasyon.DAL
         public string EPosta { get; set; }
         public string CepTelefonu { get; set; }
     
-        public virtual MusteriKartlari MusteriKartlari { get; set; }
         public virtual Sehirler Sehirler { get; set; }
+        public virtual MusteriKartlari MusteriKartlari { get; set; }
     }
 }

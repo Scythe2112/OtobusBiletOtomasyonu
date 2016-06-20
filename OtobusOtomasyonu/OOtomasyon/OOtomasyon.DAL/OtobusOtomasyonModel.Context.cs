@@ -34,7 +34,6 @@ namespace OOtomasyon.DAL
         public virtual DbSet<KoltukDurumlari> KoltukDurumlari { get; set; }
         public virtual DbSet<KoltukTipleri> KoltukTipleri { get; set; }
         public virtual DbSet<Login> Login { get; set; }
-        public virtual DbSet<Musteri> Musteri { get; set; }
         public virtual DbSet<MusteriKartlari> MusteriKartlari { get; set; }
         public virtual DbSet<OdemeTipleri> OdemeTipleri { get; set; }
         public virtual DbSet<Otobus> Otobus { get; set; }
@@ -43,7 +42,6 @@ namespace OOtomasyon.DAL
         public virtual DbSet<OtobusOzellikleri> OtobusOzellikleri { get; set; }
         public virtual DbSet<OtobusTipleri> OtobusTipleri { get; set; }
         public virtual DbSet<Personel> Personel { get; set; }
-        public virtual DbSet<PersonelYetki> PersonelYetki { get; set; }
         public virtual DbSet<Promosyonlar> Promosyonlar { get; set; }
         public virtual DbSet<PromosyonTipleri> PromosyonTipleri { get; set; }
         public virtual DbSet<SeferGuzergahi> SeferGuzergahi { get; set; }
@@ -52,10 +50,14 @@ namespace OOtomasyon.DAL
         public virtual DbSet<Sehirler> Sehirler { get; set; }
         public virtual DbSet<Sube> Sube { get; set; }
         public virtual DbSet<Unvanlar> Unvanlar { get; set; }
-        public virtual DbSet<VardiyaKayitlari> VardiyaKayitlari { get; set; }
-        public virtual DbSet<Yetkiler> Yetkiler { get; set; }
         public virtual DbSet<Sefer> Sefer { get; set; }
         public virtual DbSet<SeferDetay> SeferDetay { get; set; }
+        public virtual DbSet<YetkiTipleri> YetkiTipleri { get; set; }
         public virtual DbSet<Servis> Servis { get; set; }
+        public virtual DbSet<Yetki> Yetki { get; set; }
+        public virtual DbSet<Formlar> Formlar { get; set; }
+        public virtual DbSet<Modul> Modul { get; set; }
+        public virtual DbSet<VardiyaKayitlari> VardiyaKayitlari { get; set; }
+        public virtual DbSet<Musteri> Musteri { get; set; }
     }
 }

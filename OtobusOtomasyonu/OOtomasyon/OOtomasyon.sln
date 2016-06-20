@@ -9,24 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOtomasyon.DAL", "OOtomasyo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOtomasyon.BLL", "OOtomasyon.BLL\OOtomasyon.BLL.csproj", "{B8DB0EEC-0A8B-4E76-8ACD-E0E6AA30639F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOtomasyon.BiletIslemleri", "OOtomasyon.BiletIslemleri\OOtomasyon.BiletIslemleri.csproj", "{E022CB0C-82C4-4C9D-A7FF-6BE9C272F232}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOtomasyon.PersonelIslemleri", "PersonelIslemleri\OOtomasyon.PersonelIslemleri.csproj", "{1429F823-B345-4310-9E6E-D5676E9C4DED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOtomasyon.SubeIslemleri", "OOtomasyon.SubeIslemleri\OOtomasyon.SubeIslemleri.csproj", "{9A33FBE4-3E5D-477A-9E13-1A4FCB714FCE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOtomasyon.MuhasebeIslemleri", "OOtomasyon.MuhasebeIslemleri\OOtomasyon.MuhasebeIslemleri.csproj", "{023E33BB-CC5E-4229-B6E8-023756E9FF10}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOtomasyon.SeferIslemleri", "OOtomasyon.SeferIslemleri\OOtomasyon.SeferIslemleri.csproj", "{2C334963-089F-4DD2-8C24-B7036FAF700F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOtomasyon.OtobusIslemleri", "OOtomasyon.OtobusIslemleri\OOtomasyon.OtobusIslemleri.csproj", "{C2EF7248-2518-4311-AC01-42556473AD63}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOtomasyon.MusteriIslemleri", "OOtomasyon.MusteriIslemleri\OOtomasyon.MusteriIslemleri.csproj", "{5D063088-F1AF-4F87-85D5-0589542FAB49}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOtomasyon.ServisIslemleri", "OOtomasyon.ServisIslemleri\OOtomasyon.ServisIslemleri.csproj", "{EA2E8605-A0BA-4900-A371-4289BE416E53}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOtomasyon.PromosyonIslemleri", "OOtomasyon.PromosyonIslemleri\OOtomasyon.PromosyonIslemleri.csproj", "{C3C66511-ED72-44C5-8D21-9E01D8AF8CAB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,48 +27,12 @@ Global
 		{B8DB0EEC-0A8B-4E76-8ACD-E0E6AA30639F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8DB0EEC-0A8B-4E76-8ACD-E0E6AA30639F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8DB0EEC-0A8B-4E76-8ACD-E0E6AA30639F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E022CB0C-82C4-4C9D-A7FF-6BE9C272F232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E022CB0C-82C4-4C9D-A7FF-6BE9C272F232}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E022CB0C-82C4-4C9D-A7FF-6BE9C272F232}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E022CB0C-82C4-4C9D-A7FF-6BE9C272F232}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1429F823-B345-4310-9E6E-D5676E9C4DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1429F823-B345-4310-9E6E-D5676E9C4DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1429F823-B345-4310-9E6E-D5676E9C4DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1429F823-B345-4310-9E6E-D5676E9C4DED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A33FBE4-3E5D-477A-9E13-1A4FCB714FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A33FBE4-3E5D-477A-9E13-1A4FCB714FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A33FBE4-3E5D-477A-9E13-1A4FCB714FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A33FBE4-3E5D-477A-9E13-1A4FCB714FCE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{023E33BB-CC5E-4229-B6E8-023756E9FF10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{023E33BB-CC5E-4229-B6E8-023756E9FF10}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{023E33BB-CC5E-4229-B6E8-023756E9FF10}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{023E33BB-CC5E-4229-B6E8-023756E9FF10}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C334963-089F-4DD2-8C24-B7036FAF700F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C334963-089F-4DD2-8C24-B7036FAF700F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C334963-089F-4DD2-8C24-B7036FAF700F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C334963-089F-4DD2-8C24-B7036FAF700F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2EF7248-2518-4311-AC01-42556473AD63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2EF7248-2518-4311-AC01-42556473AD63}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2EF7248-2518-4311-AC01-42556473AD63}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2EF7248-2518-4311-AC01-42556473AD63}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D063088-F1AF-4F87-85D5-0589542FAB49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D063088-F1AF-4F87-85D5-0589542FAB49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D063088-F1AF-4F87-85D5-0589542FAB49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D063088-F1AF-4F87-85D5-0589542FAB49}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA2E8605-A0BA-4900-A371-4289BE416E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA2E8605-A0BA-4900-A371-4289BE416E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA2E8605-A0BA-4900-A371-4289BE416E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA2E8605-A0BA-4900-A371-4289BE416E53}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3C66511-ED72-44C5-8D21-9E01D8AF8CAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3C66511-ED72-44C5-8D21-9E01D8AF8CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3C66511-ED72-44C5-8D21-9E01D8AF8CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3C66511-ED72-44C5-8D21-9E01D8AF8CAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 13
+		SccNumberOfProjects = 4
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://nurettintoparli.visualstudio.com/
 		SccLocalPath0 = .
@@ -99,32 +45,5 @@ Global
 		SccProjectUniqueName3 = OOtomasyon\\OOtomasyon.WinUI.csproj
 		SccProjectName3 = OOtomasyon
 		SccLocalPath3 = OOtomasyon
-		SccProjectUniqueName4 = OOtomasyon.BiletIslemleri\\OOtomasyon.BiletIslemleri.csproj
-		SccProjectName4 = OOtomasyon.BiletIslemleri
-		SccLocalPath4 = OOtomasyon.BiletIslemleri
-		SccProjectUniqueName5 = OOtomasyon.SubeIslemleri\\OOtomasyon.SubeIslemleri.csproj
-		SccProjectName5 = OOtomasyon.SubeIslemleri
-		SccLocalPath5 = OOtomasyon.SubeIslemleri
-		SccProjectUniqueName6 = OOtomasyon.MuhasebeIslemleri\\OOtomasyon.MuhasebeIslemleri.csproj
-		SccProjectName6 = OOtomasyon.MuhasebeIslemleri
-		SccLocalPath6 = OOtomasyon.MuhasebeIslemleri
-		SccProjectUniqueName7 = PersonelIslemleri\\OOtomasyon.PersonelIslemleri.csproj
-		SccProjectName7 = PersonelIslemleri
-		SccLocalPath7 = PersonelIslemleri
-		SccProjectUniqueName8 = OOtomasyon.SeferIslemleri\\OOtomasyon.SeferIslemleri.csproj
-		SccProjectName8 = OOtomasyon.SeferIslemleri
-		SccLocalPath8 = OOtomasyon.SeferIslemleri
-		SccProjectUniqueName9 = OOtomasyon.OtobusIslemleri\\OOtomasyon.OtobusIslemleri.csproj
-		SccProjectName9 = OOtomasyon.OtobusIslemleri
-		SccLocalPath9 = OOtomasyon.OtobusIslemleri
-		SccProjectUniqueName10 = OOtomasyon.MusteriIslemleri\\OOtomasyon.MusteriIslemleri.csproj
-		SccProjectName10 = OOtomasyon.MusteriIslemleri
-		SccLocalPath10 = OOtomasyon.MusteriIslemleri
-		SccProjectUniqueName11 = OOtomasyon.ServisIslemleri\\OOtomasyon.ServisIslemleri.csproj
-		SccProjectName11 = OOtomasyon.ServisIslemleri
-		SccLocalPath11 = OOtomasyon.ServisIslemleri
-		SccProjectUniqueName12 = OOtomasyon.PromosyonIslemleri\\OOtomasyon.PromosyonIslemleri.csproj
-		SccProjectName12 = OOtomasyon.PromosyonIslemleri
-		SccLocalPath12 = OOtomasyon.PromosyonIslemleri
 	EndGlobalSection
 EndGlobal

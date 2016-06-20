@@ -58,11 +58,15 @@
     <Compile Include="Enum.cs" />
     <Compile Include="FormTool.cs" />
     <Compile Include="Repositories\BiletRepository.cs" />
+    <Compile Include="Repositories\FormlarRepository.cs" />
     <Compile Include="Repositories\GuzergahlarRepository.cs" />
+    <Compile Include="Repositories\HarcamalarRepository.cs" />
+    <Compile Include="Repositories\HarcamaTipleriRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\KoltukDurumlariRepository.cs" />
     <Compile Include="Repositories\LoginRepository.cs" />
+    <Compile Include="Repositories\ModulRepository.cs" />
     <Compile Include="Repositories\MusteriKartlariRepository.cs" />
     <Compile Include="Repositories\MusteriRepository.cs" />
     <Compile Include="Repositories\OdemeTipleriRepository.cs" />
@@ -83,6 +87,9 @@
     <Compile Include="Repositories\ServisRepository.cs" />
     <Compile Include="Repositories\SubeRepository.cs" />
     <Compile Include="Repositories\UnvanRepository.cs" />
+    <Compile Include="Repositories\VardiyaKayitlariRepository.cs" />
+    <Compile Include="Repositories\YetkiRepository.cs" />
+    <Compile Include="Repositories\YetkiTipleriRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OOtomasyon.DAL\OOtomasyon.DAL.csproj">

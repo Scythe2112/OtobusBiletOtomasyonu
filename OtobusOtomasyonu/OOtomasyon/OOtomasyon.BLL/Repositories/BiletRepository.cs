@@ -36,9 +36,22 @@ namespace OOtomasyon.BLL.Repositories
             return db.Bilet.Find(itemID);
         }
 
-        public List<Bilet> SelectBySeferDetayID(int seferDetayId)
+        public List<Bilet> SelectBySeferDetayIDOnly(int seferDetaySefer)
         {
-            return db.Bilet.Where(x=> x.SeferDetayID == seferDetayId).ToList();
+            return db.Bilet.Where(x => x.SeferDetayID == seferDetaySefer).ToList();
+        }
+
+        public List<Bilet> SelectBySeferDetayID(SeferDetay seferDetay,int start, int end,int binis,int inis)
+        {
+
+            return db.Bilet.ToList().Where(x => x.SeferDetayID == seferDetay.IDSeferDetay &&
+           ((SelectByDestination(seferDetay.SeferID, x.BinisYeri) <= SelectByDestination(seferDetay.SeferID, inis)) && 
+           (SelectByDestination(seferDetay.SeferID, x.InisYeri) > SelectByDestination(seferDetay.SeferID, binis)))).ToList();
+        }
+
+        public int SelectByDestination(int seferId,int yer)
+        {
+            return Convert.ToInt32(db.SeferGuzergahi.Where(x => x.SeferID == seferId && x.GuzergahID== yer).First().GuzergahSirasi);
         }
 
         public void Update(Bilet item)

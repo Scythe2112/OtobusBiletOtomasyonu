@@ -50,7 +50,7 @@ namespace OOtomasyon.BLL.Repositories
 
         public List<SeferGuzergahi> SeferGuzergahiGetir(int itemID)
         {
-            return db.SeferGuzergahi.Where(x => x.SeferID == itemID).ToList();
+            return db.SeferGuzergahi.Where(x => x.SeferID == itemID).OrderBy(y=>y.GuzergahSirasi).ToList();
         }
 
     }

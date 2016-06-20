@@ -30,9 +30,19 @@ namespace OOtomasyon.BLL.Repositories
             return db.Otobus.ToList();
         }
 
+        public List<Otobus> SelectAllActive()
+        {
+            return db.Otobus.Where(o => o.OtobusDurumuID == 1).ToList();
+        }
+
         public Otobus SelectByID(int itemID)
         {
             return db.Otobus.Find(itemID);
+        }
+
+        public Otobus SelectByRandom()
+        {
+            return db.Otobus.Where(o=> o.OtobusDurumuID==1).FirstOrDefault();
         }
 
         public void Update(Otobus item)

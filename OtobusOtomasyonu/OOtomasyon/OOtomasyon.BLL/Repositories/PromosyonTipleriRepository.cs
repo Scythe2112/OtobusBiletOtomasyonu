@@ -27,7 +27,7 @@ namespace OOtomasyon.BLL.Repositories
 
         public List<PromosyonTipleri> SelectAll()
         {
-            return db.PromosyonTipleri.Where(x=>x.IDPromosyonTipi!=11).ToList();
+            return db.PromosyonTipleri.ToList();
         }
 
         public PromosyonTipleri SelectByID(int itemID)

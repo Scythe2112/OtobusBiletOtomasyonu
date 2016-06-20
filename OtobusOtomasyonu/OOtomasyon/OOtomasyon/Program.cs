@@ -16,7 +16,7 @@ namespace OOtomasyon
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GirisSayfasi());
+            Application.Run(new frmUiLogin());
         }
     }
 }

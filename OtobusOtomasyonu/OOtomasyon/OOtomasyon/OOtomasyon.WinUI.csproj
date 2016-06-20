@@ -9,13 +9,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OOtomasyon</RootNamespace>
     <AssemblyName>OOtomasyon</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -59,25 +60,112 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GirisSayfasi.cs">
+    <Compile Include="BiletIslemleri\frmBiBiletIcerik.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GirisSayfasi.Designer.cs">
-      <DependentUpon>GirisSayfasi.cs</DependentUpon>
+    <Compile Include="BiletIslemleri\frmBiBiletIcerik.Designer.cs">
+      <DependentUpon>frmBiBiletIcerik.cs</DependentUpon>
     </Compile>
-    <Compile Include="PersonelSayfasi.cs">
+    <Compile Include="BiletIslemleri\frmBiBiletSat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PersonelSayfasi.Designer.cs">
-      <DependentUpon>PersonelSayfasi.cs</DependentUpon>
+    <Compile Include="BiletIslemleri\frmBiBiletSat.Designer.cs">
+      <DependentUpon>frmBiBiletSat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUiLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUiLogin.Designer.cs">
+      <DependentUpon>frmUiLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUiPersonel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUiPersonel.Designer.cs">
+      <DependentUpon>frmUiPersonel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MuhasebeIslemleri\frmMuiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MuhasebeIslemleri\frmMuiMain.Designer.cs">
+      <DependentUpon>frmMuiMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MusteriIslemleri\frmMiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MusteriIslemleri\frmMiMain.Designer.cs">
+      <DependentUpon>frmMiMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OtobusIslemleri\frmOiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OtobusIslemleri\frmOiMain.Designer.cs">
+      <DependentUpon>frmOiMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelIslemleri\frmPeiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelIslemleri\frmPeiMain.Designer.cs">
+      <DependentUpon>frmPeiMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="PromosyonIslemleri\frmPiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PromosyonIslemleri\frmPiMain.Designer.cs">
+      <DependentUpon>frmPiMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GirisSayfasi.resx">
-      <DependentUpon>GirisSayfasi.cs</DependentUpon>
+    <Compile Include="SeferIslemleri\frmSfiDetay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeferIslemleri\frmSfiDetay.Designer.cs">
+      <DependentUpon>frmSfiDetay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SeferIslemleri\frmSfiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeferIslemleri\frmSfiMain.Designer.cs">
+      <DependentUpon>frmSfiMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubeIslemleri\frmSiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubeIslemleri\frmSiMain.Designer.cs">
+      <DependentUpon>frmSiMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YetkiIslemleri\frmYiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YetkiIslemleri\frmYiMain.Designer.cs">
+      <DependentUpon>frmYiMain.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BiletIslemleri\frmBiBiletIcerik.resx">
+      <DependentUpon>frmBiBiletIcerik.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PersonelSayfasi.resx">
-      <DependentUpon>PersonelSayfasi.cs</DependentUpon>
+    <EmbeddedResource Include="BiletIslemleri\frmBiBiletSat.resx">
+      <DependentUpon>frmBiBiletSat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUiLogin.resx">
+      <DependentUpon>frmUiLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUiPersonel.resx">
+      <DependentUpon>frmUiPersonel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MuhasebeIslemleri\frmMuiMain.resx">
+      <DependentUpon>frmMuiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MusteriIslemleri\frmMiMain.resx">
+      <DependentUpon>frmMiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OtobusIslemleri\frmOiMain.resx">
+      <DependentUpon>frmOiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelIslemleri\frmPeiMain.resx">
+      <DependentUpon>frmPeiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PromosyonIslemleri\frmPiMain.resx">
+      <DependentUpon>frmPiMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -87,7 +175,20 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SeferIslemleri\frmSfiDetay.resx">
+      <DependentUpon>frmSfiDetay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeferIslemleri\frmSfiMain.resx">
+      <DependentUpon>frmSfiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubeIslemleri\frmSiMain.resx">
+      <DependentUpon>frmSiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YetkiIslemleri\frmYiMain.resx">
+      <DependentUpon>frmYiMain.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -102,9 +203,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\OOtomasyon.BLL\OOtomasyon.BLL.csproj">
       <Project>{b8db0eec-0a8b-4e76-8acd-e0e6aa30639f}</Project>
@@ -114,6 +213,23 @@
       <Project>{223043eb-1ce2-4906-bc33-17126a40d1aa}</Project>
       <Name>OOtomasyon.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BiletIslemleri\Resource\image\kg.gif" />
+    <Content Include="BiletIslemleri\Resource\image\km.gif" />
+    <Content Include="BiletIslemleri\Resource\image\kp.gif" />
+    <Content Include="BiletIslemleri\Resource\image\ky.gif" />
+    <Content Include="BiletIslemleri\Resource\image\Otobus_Arka.gif" />
+    <Content Include="BiletIslemleri\Resource\image\Otobus_On.gif" />
+    <Content Include="BiletIslemleri\Resource\image\Otobus_Orta.gif" />
+    <Content Include="BiletIslemleri\Resource\image\RenkAciklama.gif" />
+    <None Include="Resources\biletsat.jpg" />
+    <None Include="Resources\login1.jpg" />
+    <None Include="Resources\login.jpg" />
+    <None Include="Resources\turkiye.jpg" />
+    <None Include="Resources\Otobus_Orta.gif" />
+    <None Include="Resources\Otobus_On.gif" />
+    <None Include="Resources\Otobus_Arka.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

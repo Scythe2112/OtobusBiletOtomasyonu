@@ -27,7 +27,7 @@ namespace OOtomasyon.BLL.Repositories
 
         public List<Sefer> SelectAll()
         {
-            return db.Sefer.ToList();
+            return db.Sefer.Where(s=>s.SeferDurum==true).ToList();
         }
 
         public Sefer SelectByID(int itemID)

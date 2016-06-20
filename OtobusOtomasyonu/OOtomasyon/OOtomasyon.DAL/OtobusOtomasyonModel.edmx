@@ -96,8 +96,8 @@
           <Property Name="IDMusteri" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Ad" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Soyad" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="TcKimlikNo" Type="char" MaxLength="11" />
-          <Property Name="KartID" Type="nchar" MaxLength="36" Nullable="false" />
+          <Property Name="TcKimlikNo" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="KartID" Type="nchar" MaxLength="36" />
           <Property Name="Cinsiyet" Type="nchar" MaxLength="10" />
           <Property Name="DogumTarihi" Type="date" />
           <Property Name="SehirID" Type="int" />
@@ -180,14 +180,6 @@
           <Property Name="Unvan" Type="int" Nullable="false" />
           <Property Name="SubeID" Type="int" Nullable="false" />
           <Property Name="TcKimlikNo" Type="char" MaxLength="11" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PersonelYetki">
-          <Key>
-            <PropertyRef Name="IDPersonelYetki" />
-          </Key>
-          <Property Name="IDPersonelYetki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PersonelID" Type="int" Nullable="false" />
-          <Property Name="YetkiID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Promosyonlar">
           <Key>
@@ -296,16 +288,41 @@
           </Key>
           <Property Name="IDVardiye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PersonelID" Type="int" Nullable="false" />
-          <Property Name="LoginGirisTarihi" Type="datetime" Nullable="false" />
-          <Property Name="LoginCikisTarihi" Type="datetime" Nullable="false" />
+          <Property Name="LoginGirisTarihi" Type="datetime" />
+          <Property Name="LoginCikisTarihi" Type="datetime" />
         </EntityType>
-        <EntityType Name="Yetkiler">
+        <EntityType Name="Formlar">
+          <Key>
+            <PropertyRef Name="IDForm" />
+          </Key>
+          <Property Name="IDForm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModulID" Type="int" Nullable="false" />
+          <Property Name="Form" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modul">
+          <Key>
+            <PropertyRef Name="IDModul" />
+          </Key>
+          <Property Name="IDModul" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModulAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Modul" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yetki">
           <Key>
             <PropertyRef Name="IDYetki" />
           </Key>
           <Property Name="IDYetki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Yetki" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Aciklama" Type="ntext" />
+          <Property Name="PersonelID" Type="int" Nullable="false" />
+          <Property Name="FormID" Type="int" Nullable="false" />
+          <Property Name="YetkiTipiID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="YetkiTipleri">
+          <Key>
+            <PropertyRef Name="YetkiTipleri" />
+          </Key>
+          <Property Name="YetkiTipleri" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YetkiAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK__SeferGuze__Guzer__6E01572D">
           <End Role="Guzergahlar" Type="Self.Guzergahlar" Multiplicity="1" />
@@ -556,30 +573,6 @@
             </Principal>
             <Dependent Role="Personel">
               <PropertyRef Name="Unvan" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonelYetki_Personel">
-          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
-          <End Role="PersonelYetki" Type="Self.PersonelYetki" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personel">
-              <PropertyRef Name="IDPersonel" />
-            </Principal>
-            <Dependent Role="PersonelYetki">
-              <PropertyRef Name="PersonelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonelYetki_Yetkiler">
-          <End Role="Yetkiler" Type="Self.Yetkiler" Multiplicity="1" />
-          <End Role="PersonelYetki" Type="Self.PersonelYetki" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Yetkiler">
-              <PropertyRef Name="IDYetki" />
-            </Principal>
-            <Dependent Role="PersonelYetki">
-              <PropertyRef Name="YetkiID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -691,8 +684,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PK_Form_Modul">
+          <End Role="Modul" Type="Self.Modul" Multiplicity="1" />
+          <End Role="Formlar" Type="Self.Formlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="IDModul" />
+            </Principal>
+            <Dependent Role="Formlar">
+              <PropertyRef Name="ModulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="PK_Musteri_MusteriKartlari">
-          <End Role="MusteriKartlari" Type="Self.MusteriKartlari" Multiplicity="1" />
+          <End Role="MusteriKartlari" Type="Self.MusteriKartlari" Multiplicity="0..1" />
           <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MusteriKartlari">
@@ -700,6 +705,42 @@
             </Principal>
             <Dependent Role="Musteri">
               <PropertyRef Name="KartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_Yetki_Form">
+          <End Role="Formlar" Type="Self.Formlar" Multiplicity="1" />
+          <End Role="Yetki" Type="Self.Yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formlar">
+              <PropertyRef Name="IDForm" />
+            </Principal>
+            <Dependent Role="Yetki">
+              <PropertyRef Name="FormID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_Yetki_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="Yetki" Type="Self.Yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="Yetki">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_Yetki_YetkiTipi">
+          <End Role="YetkiTipleri" Type="Self.YetkiTipleri" Multiplicity="1" />
+          <End Role="Yetki" Type="Self.Yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YetkiTipleri">
+              <PropertyRef Name="YetkiTipleri" />
+            </Principal>
+            <Dependent Role="Yetki">
+              <PropertyRef Name="YetkiTipiID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -722,7 +763,6 @@
           <EntitySet Name="OtobusOzellikleri" EntityType="Self.OtobusOzellikleri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OtobusTipleri" EntityType="Self.OtobusTipleri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PersonelYetki" EntityType="Self.PersonelYetki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Promosyonlar" EntityType="Self.Promosyonlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PromosyonTipleri" EntityType="Self.PromosyonTipleri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sefer" EntityType="Self.Sefer" Schema="dbo" store:Type="Tables" />
@@ -735,7 +775,10 @@
           <EntitySet Name="Sube" EntityType="Self.Sube" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unvanlar" EntityType="Self.Unvanlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VardiyaKayitlari" EntityType="Self.VardiyaKayitlari" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Yetkiler" EntityType="Self.Yetkiler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Formlar" EntityType="Self.Formlar" Schema="pnuretSu_wissen" store:Type="Tables" />
+          <EntitySet Name="Modul" EntityType="Self.Modul" Schema="pnuretSu_wissen" store:Type="Tables" />
+          <EntitySet Name="Yetki" EntityType="Self.Yetki" Schema="pnuretSu_wissen" store:Type="Tables" />
+          <EntitySet Name="YetkiTipleri" EntityType="Self.YetkiTipleri" Schema="pnuretSu_wissen" store:Type="Tables" />
           <AssociationSet Name="FK__SeferGuze__Guzer__6E01572D" Association="Self.FK__SeferGuze__Guzer__6E01572D">
             <End Role="Guzergahlar" EntitySet="Guzergahlar" />
             <End Role="SeferGuzergahi" EntitySet="SeferGuzergahi" />
@@ -820,14 +863,6 @@
             <End Role="Unvanlar" EntitySet="Unvanlar" />
             <End Role="Personel" EntitySet="Personel" />
           </AssociationSet>
-          <AssociationSet Name="FK_PersonelYetki_Personel" Association="Self.FK_PersonelYetki_Personel">
-            <End Role="Personel" EntitySet="Personel" />
-            <End Role="PersonelYetki" EntitySet="PersonelYetki" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonelYetki_Yetkiler" Association="Self.FK_PersonelYetki_Yetkiler">
-            <End Role="Yetkiler" EntitySet="Yetkiler" />
-            <End Role="PersonelYetki" EntitySet="PersonelYetki" />
-          </AssociationSet>
           <AssociationSet Name="FK_Promosyonlar_PromosyonTipleri" Association="Self.FK_Promosyonlar_PromosyonTipleri">
             <End Role="PromosyonTipleri" EntitySet="PromosyonTipleri" />
             <End Role="Promosyonlar" EntitySet="Promosyonlar" />
@@ -864,9 +899,25 @@
             <End Role="Personel" EntitySet="Personel" />
             <End Role="VardiyaKayitlari" EntitySet="VardiyaKayitlari" />
           </AssociationSet>
+          <AssociationSet Name="PK_Form_Modul" Association="Self.PK_Form_Modul">
+            <End Role="Modul" EntitySet="Modul" />
+            <End Role="Formlar" EntitySet="Formlar" />
+          </AssociationSet>
           <AssociationSet Name="PK_Musteri_MusteriKartlari" Association="Self.PK_Musteri_MusteriKartlari">
             <End Role="MusteriKartlari" EntitySet="MusteriKartlari" />
             <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+          <AssociationSet Name="PK_Yetki_Form" Association="Self.PK_Yetki_Form">
+            <End Role="Formlar" EntitySet="Formlar" />
+            <End Role="Yetki" EntitySet="Yetki" />
+          </AssociationSet>
+          <AssociationSet Name="PK_Yetki_Personel" Association="Self.PK_Yetki_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="Yetki" EntitySet="Yetki" />
+          </AssociationSet>
+          <AssociationSet Name="PK_Yetki_YetkiTipi" Association="Self.PK_Yetki_YetkiTipi">
+            <End Role="YetkiTipleri" EntitySet="YetkiTipleri" />
+            <End Role="Yetki" EntitySet="Yetki" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -973,23 +1024,6 @@
           <Property Name="Parola" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Personel" Relationship="Self.FK_Login_Personel" FromRole="Login" ToRole="Personel" />
         </EntityType>
-        <EntityType Name="Musteri">
-          <Key>
-            <PropertyRef Name="IDMusteri" />
-          </Key>
-          <Property Name="IDMusteri" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Soyad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TcKimlikNo" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
-          <Property Name="KartID" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Cinsiyet" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
-          <Property Name="SehirID" Type="Int32" />
-          <Property Name="EPosta" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="CepTelefonu" Type="String" MaxLength="24" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="MusteriKartlari" Relationship="Self.FK_Musteri_MusteriKartlari" FromRole="Musteri" ToRole="MusteriKartlari" />
-          <NavigationProperty Name="Sehirler" Relationship="Self.FK_Musteri_Sehirler" FromRole="Musteri" ToRole="Sehirler" />
-        </EntityType>
         <EntityType Name="MusteriKartlari">
           <Key>
             <PropertyRef Name="IDKart" />
@@ -997,7 +1031,7 @@
           <Property Name="IDKart" Type="String" MaxLength="36" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Bakiye" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="BiletSayisi" Type="Int32" />
-          <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_MusteriKartlari" FromRole="MusteriKartlari" ToRole="Musteri" />
+          <NavigationProperty Name="Musteri" Relationship="pnuretSu_otobusModel.PK_Musteri_MusteriKartlari" FromRole="MusteriKartlari" ToRole="Musteri" />
         </EntityType>
         <EntityType Name="OdemeTipleri">
           <Key>
@@ -1083,19 +1117,9 @@
           <NavigationProperty Name="Sehirler" Relationship="Self.FK_Personel_Sehirler" FromRole="Personel" ToRole="Sehirler" />
           <NavigationProperty Name="Sube" Relationship="Self.FK_Personel_Sube" FromRole="Personel" ToRole="Sube" />
           <NavigationProperty Name="Unvanlar" Relationship="Self.FK_Personel_Unvanlar" FromRole="Personel" ToRole="Unvanlar" />
-          <NavigationProperty Name="PersonelYetki" Relationship="Self.FK_PersonelYetki_Personel" FromRole="Personel" ToRole="PersonelYetki" />
           <NavigationProperty Name="SeferPersonel" Relationship="Self.FK_SeferPersonel_Personel" FromRole="Personel" ToRole="SeferPersonel" />
-          <NavigationProperty Name="VardiyaKayitlari" Relationship="Self.FK_VardiyaKayitlari_Personel" FromRole="Personel" ToRole="VardiyaKayitlari" />
-        </EntityType>
-        <EntityType Name="PersonelYetki">
-          <Key>
-            <PropertyRef Name="IDPersonelYetki" />
-          </Key>
-          <Property Name="IDPersonelYetki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PersonelID" Type="Int32" Nullable="false" />
-          <Property Name="YetkiID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Personel" Relationship="Self.FK_PersonelYetki_Personel" FromRole="PersonelYetki" ToRole="Personel" />
-          <NavigationProperty Name="Yetkiler" Relationship="Self.FK_PersonelYetki_Yetkiler" FromRole="PersonelYetki" ToRole="Yetkiler" />
+          <NavigationProperty Name="Yetki" Relationship="pnuretSu_otobusModel.PK_Yetki_Personel" FromRole="Personel" ToRole="Yetki" />
+          <NavigationProperty Name="VardiyaKayitlari" Relationship="pnuretSu_otobusModel.FK_VardiyaKayitlari_Personel" FromRole="Personel" ToRole="VardiyaKayitlari" />
         </EntityType>
         <EntityType Name="Promosyonlar">
           <Key>
@@ -1155,8 +1179,8 @@
           <Property Name="IDSehir" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Sehir" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Guzergahlar" Relationship="Self.FK_Guzergahlar_Sehirler" FromRole="Sehirler" ToRole="Guzergahlar" />
-          <NavigationProperty Name="Musteri" Relationship="Self.FK_Musteri_Sehirler" FromRole="Sehirler" ToRole="Musteri" />
           <NavigationProperty Name="Personel" Relationship="Self.FK_Personel_Sehirler" FromRole="Sehirler" ToRole="Personel" />
+          <NavigationProperty Name="Musteri" Relationship="pnuretSu_otobusModel.FK_Musteri_Sehirler" FromRole="Sehirler" ToRole="Musteri" />
         </EntityType>
         <EntityType Name="Sube">
           <Key>
@@ -1179,25 +1203,6 @@
           <Property Name="IDUnvan" Type="Int32" Nullable="false" />
           <Property Name="Unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Personel" Relationship="Self.FK_Personel_Unvanlar" FromRole="Unvanlar" ToRole="Personel" />
-        </EntityType>
-        <EntityType Name="VardiyaKayitlari">
-          <Key>
-            <PropertyRef Name="IDVardiye" />
-          </Key>
-          <Property Name="IDVardiye" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PersonelID" Type="Int32" Nullable="false" />
-          <Property Name="LoginGirisTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LoginCikisTarihi" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Personel" Relationship="Self.FK_VardiyaKayitlari_Personel" FromRole="VardiyaKayitlari" ToRole="Personel" />
-        </EntityType>
-        <EntityType Name="Yetkiler">
-          <Key>
-            <PropertyRef Name="IDYetki" />
-          </Key>
-          <Property Name="IDYetki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Yetki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PersonelYetki" Relationship="Self.FK_PersonelYetki_Yetkiler" FromRole="Yetkiler" ToRole="PersonelYetki" />
         </EntityType>
         <Association Name="FK_Bilet_KoltukDurumlari">
           <End Role="KoltukDurumlari" Type="Self.KoltukDurumlari" Multiplicity="1" />
@@ -1331,30 +1336,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Musteri_MusteriKartlari">
-          <End Role="MusteriKartlari" Type="Self.MusteriKartlari" Multiplicity="1" />
-          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MusteriKartlari">
-              <PropertyRef Name="IDKart" />
-            </Principal>
-            <Dependent Role="Musteri">
-              <PropertyRef Name="KartID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Musteri_Sehirler">
-          <End Role="Sehirler" Type="Self.Sehirler" Multiplicity="0..1" />
-          <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sehirler">
-              <PropertyRef Name="IDSehir" />
-            </Principal>
-            <Dependent Role="Musteri">
-              <PropertyRef Name="SehirID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Otobus_OtobusDurumlari">
           <End Role="OtobusDurumlari" Type="Self.OtobusDurumlari" Multiplicity="1" />
           <End Role="Otobus" Type="Self.Otobus" Multiplicity="*" />
@@ -1451,18 +1432,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PersonelYetki_Personel">
-          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
-          <End Role="PersonelYetki" Type="Self.PersonelYetki" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personel">
-              <PropertyRef Name="IDPersonel" />
-            </Principal>
-            <Dependent Role="PersonelYetki">
-              <PropertyRef Name="PersonelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SeferPersonel_Personel">
           <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
           <End Role="SeferPersonel" Type="Self.SeferPersonel" Multiplicity="*" />
@@ -1472,30 +1441,6 @@
             </Principal>
             <Dependent Role="SeferPersonel">
               <PropertyRef Name="PersonelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VardiyaKayitlari_Personel">
-          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
-          <End Role="VardiyaKayitlari" Type="Self.VardiyaKayitlari" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personel">
-              <PropertyRef Name="IDPersonel" />
-            </Principal>
-            <Dependent Role="VardiyaKayitlari">
-              <PropertyRef Name="PersonelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PersonelYetki_Yetkiler">
-          <End Role="Yetkiler" Type="Self.Yetkiler" Multiplicity="1" />
-          <End Role="PersonelYetki" Type="Self.PersonelYetki" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Yetkiler">
-              <PropertyRef Name="IDYetki" />
-            </Principal>
-            <Dependent Role="PersonelYetki">
-              <PropertyRef Name="YetkiID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1521,7 +1466,6 @@
           <EntitySet Name="KoltukDurumlari" EntityType="Self.KoltukDurumlari" />
           <EntitySet Name="KoltukTipleri" EntityType="Self.KoltukTipleri" />
           <EntitySet Name="Login" EntityType="Self.Login" />
-          <EntitySet Name="Musteri" EntityType="Self.Musteri" />
           <EntitySet Name="MusteriKartlari" EntityType="Self.MusteriKartlari" />
           <EntitySet Name="OdemeTipleri" EntityType="Self.OdemeTipleri" />
           <EntitySet Name="Otobus" EntityType="Self.Otobus" />
@@ -1530,7 +1474,6 @@
           <EntitySet Name="OtobusOzellikleri" EntityType="Self.OtobusOzellikleri" />
           <EntitySet Name="OtobusTipleri" EntityType="Self.OtobusTipleri" />
           <EntitySet Name="Personel" EntityType="Self.Personel" />
-          <EntitySet Name="PersonelYetki" EntityType="Self.PersonelYetki" />
           <EntitySet Name="Promosyonlar" EntityType="Self.Promosyonlar" />
           <EntitySet Name="PromosyonTipleri" EntityType="Self.PromosyonTipleri" />
           <EntitySet Name="SeferGuzergahi" EntityType="Self.SeferGuzergahi" />
@@ -1539,8 +1482,6 @@
           <EntitySet Name="Sehirler" EntityType="Self.Sehirler" />
           <EntitySet Name="Sube" EntityType="Self.Sube" />
           <EntitySet Name="Unvanlar" EntityType="Self.Unvanlar" />
-          <EntitySet Name="VardiyaKayitlari" EntityType="Self.VardiyaKayitlari" />
-          <EntitySet Name="Yetkiler" EntityType="Self.Yetkiler" />
           <AssociationSet Name="FK_Bilet_KoltukDurumlari" Association="Self.FK_Bilet_KoltukDurumlari">
             <End Role="KoltukDurumlari" EntitySet="KoltukDurumlari" />
             <End Role="Bilet" EntitySet="Bilet" />
@@ -1585,14 +1526,6 @@
             <End Role="Personel" EntitySet="Personel" />
             <End Role="Login" EntitySet="Login" />
           </AssociationSet>
-          <AssociationSet Name="FK_Musteri_MusteriKartlari" Association="Self.FK_Musteri_MusteriKartlari">
-            <End Role="MusteriKartlari" EntitySet="MusteriKartlari" />
-            <End Role="Musteri" EntitySet="Musteri" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Musteri_Sehirler" Association="Self.FK_Musteri_Sehirler">
-            <End Role="Sehirler" EntitySet="Sehirler" />
-            <End Role="Musteri" EntitySet="Musteri" />
-          </AssociationSet>
           <AssociationSet Name="FK_Otobus_OtobusDurumlari" Association="Self.FK_Otobus_OtobusDurumlari">
             <End Role="OtobusDurumlari" EntitySet="OtobusDurumlari" />
             <End Role="Otobus" EntitySet="Otobus" />
@@ -1625,21 +1558,9 @@
             <End Role="Unvanlar" EntitySet="Unvanlar" />
             <End Role="Personel" EntitySet="Personel" />
           </AssociationSet>
-          <AssociationSet Name="FK_PersonelYetki_Personel" Association="Self.FK_PersonelYetki_Personel">
-            <End Role="Personel" EntitySet="Personel" />
-            <End Role="PersonelYetki" EntitySet="PersonelYetki" />
-          </AssociationSet>
           <AssociationSet Name="FK_SeferPersonel_Personel" Association="Self.FK_SeferPersonel_Personel">
             <End Role="Personel" EntitySet="Personel" />
             <End Role="SeferPersonel" EntitySet="SeferPersonel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VardiyaKayitlari_Personel" Association="Self.FK_VardiyaKayitlari_Personel">
-            <End Role="Personel" EntitySet="Personel" />
-            <End Role="VardiyaKayitlari" EntitySet="VardiyaKayitlari" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonelYetki_Yetkiler" Association="Self.FK_PersonelYetki_Yetkiler">
-            <End Role="Yetkiler" EntitySet="Yetkiler" />
-            <End Role="PersonelYetki" EntitySet="PersonelYetki" />
           </AssociationSet>
           <AssociationSet Name="FK_Promosyonlar_PromosyonTipleri" Association="Self.FK_Promosyonlar_PromosyonTipleri">
             <End Role="PromosyonTipleri" EntitySet="PromosyonTipleri" />
@@ -1671,10 +1592,44 @@
             <End Role="SeferDetay" EntitySet="SeferDetay" />
             <End Role="SeferPersonel" EntitySet="SeferPersonel" />
           </AssociationSet>
+          <EntitySet Name="YetkiTipleri" EntityType="pnuretSu_otobusModel.YetkiTipleri" />
           <EntitySet Name="Servis" EntityType="pnuretSu_otobusModel.Servis" />
           <AssociationSet Name="FK_Servis_SeferDetay" Association="pnuretSu_otobusModel.FK_Servis_SeferDetay">
             <End Role="SeferDetay" EntitySet="SeferDetay" />
             <End Role="Servis" EntitySet="Servis" />
+          </AssociationSet>
+          <EntitySet Name="Yetki" EntityType="pnuretSu_otobusModel.Yetki" />
+          <AssociationSet Name="PK_Yetki_Personel" Association="pnuretSu_otobusModel.PK_Yetki_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="Yetki" EntitySet="Yetki" />
+          </AssociationSet>
+          <AssociationSet Name="PK_Yetki_YetkiTipi" Association="pnuretSu_otobusModel.PK_Yetki_YetkiTipi">
+            <End Role="YetkiTipleri" EntitySet="YetkiTipleri" />
+            <End Role="Yetki" EntitySet="Yetki" />
+          </AssociationSet>
+          <EntitySet Name="Formlar" EntityType="pnuretSu_otobusModel.Formlar" />
+          <EntitySet Name="Modul" EntityType="pnuretSu_otobusModel.Modul" />
+          <AssociationSet Name="PK_Form_Modul" Association="pnuretSu_otobusModel.PK_Form_Modul">
+            <End Role="Modul" EntitySet="Modul" />
+            <End Role="Formlar" EntitySet="Formlar" />
+          </AssociationSet>
+          <AssociationSet Name="PK_Yetki_Form" Association="pnuretSu_otobusModel.PK_Yetki_Form">
+            <End Role="Formlar" EntitySet="Formlar" />
+            <End Role="Yetki" EntitySet="Yetki" />
+          </AssociationSet>
+          <EntitySet Name="VardiyaKayitlari" EntityType="pnuretSu_otobusModel.VardiyaKayitlari" />
+          <AssociationSet Name="FK_VardiyaKayitlari_Personel" Association="pnuretSu_otobusModel.FK_VardiyaKayitlari_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="VardiyaKayitlari" EntitySet="VardiyaKayitlari" />
+          </AssociationSet>
+          <EntitySet Name="Musteri" EntityType="pnuretSu_otobusModel.Musteri" />
+          <AssociationSet Name="FK_Musteri_Sehirler" Association="pnuretSu_otobusModel.FK_Musteri_Sehirler">
+            <End Role="Sehirler" EntitySet="Sehirler" />
+            <End Role="Musteri" EntitySet="Musteri" />
+          </AssociationSet>
+          <AssociationSet Name="PK_Musteri_MusteriKartlari" Association="pnuretSu_otobusModel.PK_Musteri_MusteriKartlari">
+            <End Role="MusteriKartlari" EntitySet="MusteriKartlari" />
+            <End Role="Musteri" EntitySet="Musteri" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Sefer">
@@ -1779,6 +1734,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="YetkiTipleri">
+          <Key>
+            <PropertyRef Name="YetkiTipleri1" />
+          </Key>
+          <Property Name="YetkiTipleri1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YetkiAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Yetki" Relationship="pnuretSu_otobusModel.PK_Yetki_YetkiTipi" FromRole="YetkiTipleri" ToRole="Yetki" />
+        </EntityType>
         <EntityType Name="Servis">
           <Key>
             <PropertyRef Name="IDServis" />
@@ -1803,7 +1766,150 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="Yetki">
+          <Key>
+            <PropertyRef Name="IDYetki" />
+          </Key>
+          <Property Name="IDYetki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" Nullable="false" />
+          <Property Name="FormID" Type="Int32" Nullable="false" />
+          <Property Name="YetkiTipiID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personel" Relationship="pnuretSu_otobusModel.PK_Yetki_Personel" FromRole="Yetki" ToRole="Personel" />
+          <NavigationProperty Name="YetkiTipleri" Relationship="pnuretSu_otobusModel.PK_Yetki_YetkiTipi" FromRole="Yetki" ToRole="YetkiTipleri" />
+          <NavigationProperty Name="Formlar" Relationship="pnuretSu_otobusModel.PK_Yetki_Form" FromRole="Yetki" ToRole="Formlar" />
+        </EntityType>
+        <Association Name="PK_Yetki_Personel">
+          <End Type="pnuretSu_otobusModel.Personel" Role="Personel" Multiplicity="1" />
+          <End Type="pnuretSu_otobusModel.Yetki" Role="Yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="Yetki">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_Yetki_YetkiTipi">
+          <End Type="pnuretSu_otobusModel.YetkiTipleri" Role="YetkiTipleri" Multiplicity="1" />
+          <End Type="pnuretSu_otobusModel.Yetki" Role="Yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YetkiTipleri">
+              <PropertyRef Name="YetkiTipleri1" />
+            </Principal>
+            <Dependent Role="Yetki">
+              <PropertyRef Name="YetkiTipiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Formlar">
+          <Key>
+            <PropertyRef Name="IDForm" />
+          </Key>
+          <Property Name="IDForm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModulID" Type="Int32" Nullable="false" />
+          <Property Name="Form" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Modul" Relationship="pnuretSu_otobusModel.PK_Form_Modul" FromRole="Formlar" ToRole="Modul" />
+          <NavigationProperty Name="Yetki" Relationship="pnuretSu_otobusModel.PK_Yetki_Form" FromRole="Formlar" ToRole="Yetki" />
+        </EntityType>
+        <EntityType Name="Modul">
+          <Key>
+            <PropertyRef Name="IDModul" />
+          </Key>
+          <Property Name="IDModul" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModulAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Modul1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Formlar" Relationship="pnuretSu_otobusModel.PK_Form_Modul" FromRole="Modul" ToRole="Formlar" />
+        </EntityType>
+        <Association Name="PK_Form_Modul">
+          <End Type="pnuretSu_otobusModel.Modul" Role="Modul" Multiplicity="1" />
+          <End Type="pnuretSu_otobusModel.Formlar" Role="Formlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modul">
+              <PropertyRef Name="IDModul" />
+            </Principal>
+            <Dependent Role="Formlar">
+              <PropertyRef Name="ModulID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_Yetki_Form">
+          <End Type="pnuretSu_otobusModel.Formlar" Role="Formlar" Multiplicity="1" />
+          <End Type="pnuretSu_otobusModel.Yetki" Role="Yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formlar">
+              <PropertyRef Name="IDForm" />
+            </Principal>
+            <Dependent Role="Yetki">
+              <PropertyRef Name="FormID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VardiyaKayitlari">
+          <Key>
+            <PropertyRef Name="IDVardiye" />
+          </Key>
+          <Property Name="IDVardiye" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" Nullable="false" />
+          <Property Name="LoginGirisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="LoginCikisTarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Personel" Relationship="pnuretSu_otobusModel.FK_VardiyaKayitlari_Personel" FromRole="VardiyaKayitlari" ToRole="Personel" />
+        </EntityType>
+        <Association Name="FK_VardiyaKayitlari_Personel">
+          <End Type="pnuretSu_otobusModel.Personel" Role="Personel" Multiplicity="1" />
+          <End Type="pnuretSu_otobusModel.VardiyaKayitlari" Role="VardiyaKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="IDPersonel" />
+            </Principal>
+            <Dependent Role="VardiyaKayitlari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="IDMusteri" />
+          </Key>
+          <Property Name="IDMusteri" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TcKimlikNo" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="KartID" Type="String" MaxLength="36" FixedLength="true" Unicode="true" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+          <Property Name="SehirID" Type="Int32" />
+          <Property Name="EPosta" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CepTelefonu" Type="String" MaxLength="24" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Sehirler" Relationship="pnuretSu_otobusModel.FK_Musteri_Sehirler" FromRole="Musteri" ToRole="Sehirler" />
+          <NavigationProperty Name="MusteriKartlari" Relationship="pnuretSu_otobusModel.PK_Musteri_MusteriKartlari" FromRole="Musteri" ToRole="MusteriKartlari" />
+        </EntityType>
+        <Association Name="FK_Musteri_Sehirler">
+          <End Type="pnuretSu_otobusModel.Sehirler" Role="Sehirler" Multiplicity="0..1" />
+          <End Type="pnuretSu_otobusModel.Musteri" Role="Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sehirler">
+              <PropertyRef Name="IDSehir" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="SehirID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PK_Musteri_MusteriKartlari">
+          <End Type="pnuretSu_otobusModel.MusteriKartlari" Role="MusteriKartlari" Multiplicity="0..1" />
+          <End Type="pnuretSu_otobusModel.Musteri" Role="Musteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MusteriKartlari">
+              <PropertyRef Name="IDKart" />
+            </Principal>
+            <Dependent Role="Musteri">
+              <PropertyRef Name="KartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1902,22 +2008,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Musteri">
-            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Musteri">
-              <MappingFragment StoreEntitySet="Musteri">
-                <ScalarProperty Name="IDMusteri" ColumnName="IDMusteri" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
-                <ScalarProperty Name="TcKimlikNo" ColumnName="TcKimlikNo" />
-                <ScalarProperty Name="KartID" ColumnName="KartID" />
-                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
-                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
-                <ScalarProperty Name="SehirID" ColumnName="SehirID" />
-                <ScalarProperty Name="EPosta" ColumnName="EPosta" />
-                <ScalarProperty Name="CepTelefonu" ColumnName="CepTelefonu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MusteriKartlari">
             <EntityTypeMapping TypeName="pnuretSu_otobusModel.MusteriKartlari">
               <MappingFragment StoreEntitySet="MusteriKartlari">
@@ -2003,15 +2093,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PersonelYetki">
-            <EntityTypeMapping TypeName="pnuretSu_otobusModel.PersonelYetki">
-              <MappingFragment StoreEntitySet="PersonelYetki">
-                <ScalarProperty Name="IDPersonelYetki" ColumnName="IDPersonelYetki" />
-                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
-                <ScalarProperty Name="YetkiID" ColumnName="YetkiID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Promosyonlar">
             <EntityTypeMapping TypeName="pnuretSu_otobusModel.Promosyonlar">
               <MappingFragment StoreEntitySet="Promosyonlar">
@@ -2088,25 +2169,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VardiyaKayitlari">
-            <EntityTypeMapping TypeName="pnuretSu_otobusModel.VardiyaKayitlari">
-              <MappingFragment StoreEntitySet="VardiyaKayitlari">
-                <ScalarProperty Name="IDVardiye" ColumnName="IDVardiye" />
-                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
-                <ScalarProperty Name="LoginGirisTarihi" ColumnName="LoginGirisTarihi" />
-                <ScalarProperty Name="LoginCikisTarihi" ColumnName="LoginCikisTarihi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Yetkiler">
-            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Yetkiler">
-              <MappingFragment StoreEntitySet="Yetkiler">
-                <ScalarProperty Name="IDYetki" ColumnName="IDYetki" />
-                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
-                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sefer">
             <EntityTypeMapping TypeName="pnuretSu_otobusModel.Sefer">
               <MappingFragment StoreEntitySet="Sefer">
@@ -2131,6 +2193,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="YetkiTipleri">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.YetkiTipleri">
+              <MappingFragment StoreEntitySet="YetkiTipleri">
+                <ScalarProperty Name="YetkiAdi" ColumnName="YetkiAdi" />
+                <ScalarProperty Name="YetkiTipleri1" ColumnName="YetkiTipleri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Servis">
             <EntityTypeMapping TypeName="pnuretSu_otobusModel.Servis">
               <MappingFragment StoreEntitySet="Servis">
@@ -2140,6 +2210,61 @@
                 <ScalarProperty Name="KalkisYeri" ColumnName="KalkisYeri" />
                 <ScalarProperty Name="SeferDetayID" ColumnName="SeferDetayID" />
                 <ScalarProperty Name="IDServis" ColumnName="IDServis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yetki">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Yetki">
+              <MappingFragment StoreEntitySet="Yetki">
+                <ScalarProperty Name="YetkiTipiID" ColumnName="YetkiTipiID" />
+                <ScalarProperty Name="FormID" ColumnName="FormID" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="IDYetki" ColumnName="IDYetki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Formlar">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Formlar">
+              <MappingFragment StoreEntitySet="Formlar">
+                <ScalarProperty Name="Form" ColumnName="Form" />
+                <ScalarProperty Name="ModulID" ColumnName="ModulID" />
+                <ScalarProperty Name="FormAdi" ColumnName="FormAdi" />
+                <ScalarProperty Name="IDForm" ColumnName="IDForm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modul">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Modul">
+              <MappingFragment StoreEntitySet="Modul">
+                <ScalarProperty Name="Modul1" ColumnName="Modul" />
+                <ScalarProperty Name="ModulAdi" ColumnName="ModulAdi" />
+                <ScalarProperty Name="IDModul" ColumnName="IDModul" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VardiyaKayitlari">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.VardiyaKayitlari">
+              <MappingFragment StoreEntitySet="VardiyaKayitlari">
+                <ScalarProperty Name="LoginCikisTarihi" ColumnName="LoginCikisTarihi" />
+                <ScalarProperty Name="LoginGirisTarihi" ColumnName="LoginGirisTarihi" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="IDVardiye" ColumnName="IDVardiye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteri">
+            <EntityTypeMapping TypeName="pnuretSu_otobusModel.Musteri">
+              <MappingFragment StoreEntitySet="Musteri">
+                <ScalarProperty Name="CepTelefonu" ColumnName="CepTelefonu" />
+                <ScalarProperty Name="EPosta" ColumnName="EPosta" />
+                <ScalarProperty Name="SehirID" ColumnName="SehirID" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+                <ScalarProperty Name="KartID" ColumnName="KartID" />
+                <ScalarProperty Name="TcKimlikNo" ColumnName="TcKimlikNo" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="IDMusteri" ColumnName="IDMusteri" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

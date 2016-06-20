@@ -58,6 +58,9 @@
     <Compile Include="Bilet.cs">
       <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Formlar.cs">
+      <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Guzergahlar.cs">
       <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
     </Compile>
@@ -80,6 +83,9 @@
       <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
+      <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modul.cs">
       <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Musteri.cs">
@@ -124,9 +130,6 @@
     <Compile Include="Personel.cs">
       <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PersonelYetki.cs">
-      <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Promosyonlar.cs">
       <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
     </Compile>
@@ -164,7 +167,10 @@
     <Compile Include="VardiyaKayitlari.cs">
       <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Yetkiler.cs">
+    <Compile Include="Yetki.cs">
+      <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YetkiTipleri.cs">
       <DependentUpon>OtobusOtomasyonModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

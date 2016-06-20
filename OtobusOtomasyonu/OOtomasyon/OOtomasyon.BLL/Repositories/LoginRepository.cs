@@ -44,8 +44,17 @@ namespace OOtomasyon.BLL.Repositories
 
         public Personel LoginControl(string kullaniciAdi,string parola, out string errorText)
         {
+            Login login=null;
 
-            Login login = db.Login.FirstOrDefault(x => x.KullaniciAdi == kullaniciAdi);
+            try
+            {
+                login = db.Login.FirstOrDefault(x => x.KullaniciAdi == kullaniciAdi);
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show("Veritabanı bağlantı hatası.");
+            }
+
 
             if (login != null)
             {
@@ -62,7 +71,7 @@ namespace OOtomasyon.BLL.Repositories
             }
             else
             {
-                errorText = "Kullanıcı Adı hatalı ve ya böyle bir kullanıcı mevcut değil !";
+                errorText = "Kullanıcı Adı hatalı veya kullanıcı mevcut değil !";
                 return null;
             }   
         }

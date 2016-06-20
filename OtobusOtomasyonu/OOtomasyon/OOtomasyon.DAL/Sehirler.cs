@@ -18,8 +18,8 @@ namespace OOtomasyon.DAL
         public Sehirler()
         {
             this.Guzergahlar = new HashSet<Guzergahlar>();
-            this.Musteri = new HashSet<Musteri>();
             this.Personel = new HashSet<Personel>();
+            this.Musteri = new HashSet<Musteri>();
         }
     
         public int IDSehir { get; set; }
@@ -28,8 +28,8 @@ namespace OOtomasyon.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Guzergahlar> Guzergahlar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Musteri> Musteri { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Personel> Personel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Musteri> Musteri { get; set; }
     }
 }
